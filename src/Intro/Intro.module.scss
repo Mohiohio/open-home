@@ -1,0 +1,38 @@
+
+@import "../styles/_variables.scss";
+
+.Intro{
+  margin: 2rem 1rem;
+  padding: 1rem;
+  position: relative;
+  overflow: hidden;
+  background: $colorWhite;
+  max-width: 1024px;
+  min-width: 320px;
+  // min-height: 400px;
+  margin: 0 auto;
+  -webkit-box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.5), 0 0 60px 0 rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.5), 0 0 60px 0 rgba(0, 0, 0, 0.5);
+}
+
+h1{
+  color: $colorPrimaryDark;
+  font-weight: 300;
+  text-align: center;
+}
+
+label{
+  font-size: .75rem;
+  color: $colorText;
+  opacity: .8;
+  // text-transform: uppercase;
+  font-weight: 600;
+  margin: 0;
+  padding: 0;
+}
+input[type=text], [type=email], [type=password], , [type=tel]{
+  margin: .5rem 0;
+  font-size: 1rem;
+  padding: .25rem;
+  width: 100%;
+}
