@@ -1,0 +1,84 @@
+@import "../styles/global.scss";
+// @import "../../styles/_variables.scss";
+
+// @import '@bit/thirdman.nomoscomponents._global.scss';
+// @import '@bit/thirdman.nomoscomponents._variables.scss';
+
+.Button{
+  color: $colorBackground;
+  background: $colorUi;
+  padding: .5rem 1.5rem;
+  border: none;
+  outline: none;
+  border-radius: .25rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  position: relative;
+  .iconWrap{
+    position: absolute;
+    left: 1rem;
+    svg path{
+      fill: $colorUi;
+    }
+  }
+  + .Button{
+    margin-left: .5rem;
+  }
+  // MODIFIERS
+  &.isHighlighted{
+    background: $colorPrimaryLight;
+    color: $colorWhite;
+    .iconWrap{
+      svg path{
+        fill: $colorWhite;
+      }
+    }
+  }
+  &.isDanger{
+    background: $colorDanger;
+    color: $colorText;
+  }
+  // &.isDisabled{
+  //   background: #d2d2d2 !important;
+  //   color: #848484 !important;
+  //   border: 1px solid #93836c !important;
+  // }
+  // &.isHollow{
+  //   background: transparent !important;
+  //   border: 1px solid #93836c;
+  // }
+  // &.isText{
+  //   background: transparent !important;
+  //   border: 1px solid transparent !important;
+  //   padding: .25rem 0;
+  // }
+  &.isWide{
+    width: 100%;
+  }
+
+  //SIZES
+  &.normal{
+
+  }
+  &.large{
+    font-size: 1.25rem;
+    padding: 1rem 2rem;
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      color: $colorWhite;
+      background: $colorPrimary;
+      cursor: pointer;
+      &.isHighlighted{
+        background: $colorText;
+        color: #fff;
+        .iconWrap{
+          svg path{
+            fill: $colorText;
+          }
+        }
+      }
+    }
+  }
+}

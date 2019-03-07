@@ -1,0 +1,11 @@
+@import "./_variables.scss";
+
+body {
+  font-family: "Lato", "Century Gothic", CenturyGothic, "Apple Gothic", AppleGothic, "Open Sans", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: normal;
+  min-height: 100vh;
+  background: #27102d;
+  background: linear-gradient(to bottom, #2b0a33 0px, #4c6b92 2000px);
+}
+

@@ -1,8 +1,10 @@
 import React, { useReducer } from "react"
 import ReactDOM from "react-dom"
+import "typeface-lato";
 import Intro from "./Intro"
 import Details from "./Details"
 import Thanks from "./Thanks"
+import styles from "./index.module.scss";
 
 const initialState = {
   page: "intro",
@@ -51,16 +53,26 @@ const App = () => {
     switch (state.page) {
       case "intro":
         return (
-          <Intro
-            address={state.address.display}
-            gotToPage={goToPage}
-            setDetails={setDetails}
-          />
+          <div className={styles.Container}>
+            <Intro
+              address={state.address.display}
+              gotToPage={goToPage}
+              setDetails={setDetails}
+            />
+          </div>
         )
       case "details":
-        return <Details gotToPage={goToPage} />
+        return (
+          <div className={styles.Container}>
+            <Details gotToPage={goToPage} />
+          </div>
+        )
       case "thanks":
-        return <Thanks />
+        return  (
+          <div className={styles.Container}>
+            <Thanks />
+          </div>
+        )
     }
   }
 

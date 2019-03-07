@@ -1,0 +1,13 @@
+@import "../styles/global.scss";
+.Column{
+  display: flex;
+  align-items: flex-start;
+  justify-content: stretch;
+  flex-direction: column;
+  flex-basis: 100%;
+  flex-shrink: 1;
+  flex-grow: 1;
+  &.hasPadding{
+    padding: 0 .5rem;
+  }
+}
