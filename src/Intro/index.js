@@ -44,20 +44,20 @@ const Intro = ({ address, setDetails, gotToPage }) => {
           <Column> 
             <label>
               Mobile
+              </label>
               <input
                 type="tel"
                 onChange={({ target: { value } }) => setDetails({ phone: value })}
               />
-            </label>
             </Column>
             <Column>
             <label>
               Email
+              </label>
               <input
                 type="email"
                 onChange={({ target: { value } }) => setDetails({ email: value })}
               />
-            </label>
           </Column>
         </Row>
         <p>
