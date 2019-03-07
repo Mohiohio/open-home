@@ -11,5 +11,8 @@
   "dependencies": {
     "react": "^16.8.4",
     "react-dom": "^16.8.4"
+  },
+  "scripts": {
+    "dev": "parcel dev src/index.html"
   }
 }
