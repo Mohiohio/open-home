@@ -5,7 +5,7 @@ import Row from '../Row';
 import styles from './Intro.module.scss';
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faBuilding } from "@fortawesome/free-solid-svg-icons"
+import { faBuilding, faCheck, faTimes } from "@fortawesome/free-solid-svg-icons"
 
 const Intro = ({ address, setDetails, gotToPage }) => {
   return (
@@ -72,8 +72,7 @@ const Intro = ({ address, setDetails, gotToPage }) => {
             setDetails({ contact: true })
             gotToPage("details")
           }}
-        >
-          Yes Please :)
+        ><FontAwesomeIcon icon={faCheck} /> Yes Please
         </Button>
         <Button
           isHighlighted={false}
@@ -81,8 +80,7 @@ const Intro = ({ address, setDetails, gotToPage }) => {
             setDetails({ contact: false })
             gotToPage("thanks")
           }}
-        >
-          No Thanks
+        ><FontAwesomeIcon icon={faTimes} /> No Thanks
         </Button>
         </Row>
       </form>
