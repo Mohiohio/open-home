@@ -9,14 +9,22 @@ import { faBuilding, faCheck, faTimes } from "@fortawesome/free-solid-svg-icons"
 
 const Intro = ({ address, setDetails, gotToPage }) => {
   return (
-    <div className={styles.Intro}>
+    <div className={styles.Box}>
+      <Row>
+      <Column>
       <h1><FontAwesomeIcon icon={faBuilding} color="hsl(288, 67%, 24%)" /> {address}</h1>
-      <p>
-        Welcome to our Open Home at {address} Before you check out our handy
-        work, please take a moment to complete our Open Home Register.
-      </p>
-      <form>
-        <Row>
+          <p>
+            Welcome to our Open Home at {address}
+          </p>
+          <p>
+            Before you check out our handy
+            work, please take a moment to complete our Open Home Register.
+          </p>
+      </Column>
+
+      <Column hasDivider>  
+        <form>
+        <Row hasPadding={false}>
           <Column>
             <label>
               First Name
@@ -49,8 +57,6 @@ const Intro = ({ address, setDetails, gotToPage }) => {
                 type="tel"
                 onChange={({ target: { value } }) => setDetails({ phone: value })}
               />
-            </Column>
-            <Column>
             <label>
               Email
               </label>
@@ -60,31 +66,40 @@ const Intro = ({ address, setDetails, gotToPage }) => {
               />
           </Column>
         </Row>
-        <p>
-          If this awesome home doesn't cut the mustard for you, would you like
-          us to keep an eye out or let you know when we have another property
-          that might?
-        </p>
+        <Row hasPadding={false}>
+          <Column>
+            <p>
+              If this awesome home doesn't cut the mustard for you, would you like
+              us to keep an eye out or let you know when we have another property
+              that might?
+            </p>
+          </Column>
+        </Row>
         <Row>
-        <Button
-          isHighlighted
-          onClick={() => {
-            setDetails({ contact: true })
-            gotToPage("details")
-          }}
-        ><FontAwesomeIcon icon={faCheck} /> Yes Please
-        </Button>
-        <Button
-          isHighlighted={false}
-          onClick={() => {
-            setDetails({ contact: false })
-            gotToPage("thanks")
-          }}
-        ><FontAwesomeIcon icon={faTimes} /> No Thanks
-        </Button>
+          <div className={styles.actions}>
+            <Button
+              isHighlighted
+              onClick={() => {
+                setDetails({ contact: true })
+                gotToPage("details")
+              }}
+            ><FontAwesomeIcon icon={faCheck} /> Yes Please
+            </Button>
+            <Button
+              isHighlighted={false}
+              onClick={() => {
+                setDetails({ contact: false })
+                gotToPage("thanks")
+              }}
+            ><FontAwesomeIcon icon={faTimes} /> No Thanks
+            </Button>
+          </div>
         </Row>
       </form>
-    </div>
+        
+      </Column>
+      </Row>
+      </div>
   )
 }
 

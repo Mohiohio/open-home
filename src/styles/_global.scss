@@ -1,5 +1,5 @@
 @import "./_variables.scss";
-
+*{box-sizing: border-box}
 body {
   font-family: "Lato", "Century Gothic", CenturyGothic, "Apple Gothic", AppleGothic, "Open Sans", Helvetica, Arial, sans-serif;
   font-size: 16px;
@@ -9,3 +9,6 @@ body {
   background: linear-gradient(to bottom, #2b0a33 0px, #4c6b92 2000px);
 }
 
+p{
+  max-width: 47rem;;
+}

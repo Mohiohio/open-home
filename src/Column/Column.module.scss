@@ -7,7 +7,13 @@
   flex-basis: 100%;
   flex-shrink: 1;
   flex-grow: 1;
+  > .Row, > form{
+    width: 100%;
+  }
   &.hasPadding{
     padding: 0 .5rem;
+  }
+  &.hasDivider{
+    border-left: 1px solid $colorUiLight;
   }
 }
