@@ -1,6 +1,8 @@
 import React, { useReducer } from "react"
 import ReactDOM from "react-dom"
 import Intro from "./Intro"
+import Details from "./Details"
+import Thanks from "./Thanks"
 
 const initialState = {
   page: "intro",
@@ -55,6 +57,10 @@ const App = () => {
             setDetails={setDetails}
           />
         )
+      case "details":
+        return <Details gotToPage={goToPage} />
+      case "thanks":
+        return <Thanks />
     }
   }
 
