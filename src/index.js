@@ -7,7 +7,7 @@ import Thanks from "./Thanks"
 import styles from "./index.module.scss"
 
 const initialState = {
-  page: "thanks",
+  page: "intro",
   address: {
     display: "20 Example Street"
   },
@@ -54,19 +54,12 @@ const App = () => {
     })
   }
 
+  const saveDetails = details => {
+    console.log("saving details now", details)
+  }
+
   const renderPage = () => {
     switch (state.page) {
-      case "intro":
-        return (
-          <div className={styles.Container}>
-            <Intro
-              address={state.address.display}
-              goToPage={goToPage}
-              details={state.details}
-              setDetails={setDetails}
-            />
-          </div>
-        )
       case "details":
         return (
           <div className={styles.Container}>
@@ -78,15 +71,26 @@ const App = () => {
           </div>
         )
       case "thanks":
+        saveDetails(state.details)
         return (
           <div className={styles.Container}>
             <Thanks details={state.details} goToPage={goToPage} />
           </div>
         )
+      case "intro":
+      default:
+        return (
+          <div className={styles.Container}>
+            <Intro
+              address={state.address.display}
+              goToPage={goToPage}
+              details={state.details}
+              setDetails={setDetails}
+            />
+          </div>
+        )
     }
   }
-
-  console.log(state.details)
 
   return <div>{renderPage()}</div>
 }
