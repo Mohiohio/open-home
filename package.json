@@ -26,6 +26,7 @@
     "typeface-lato": "^0.0.54"
   },
   "scripts": {
-    "dev": "parcel dev src/index.html"
+    "dev": "parcel dev src/index.html",
+    "build": "parcel build src/index.html"
   }
 }

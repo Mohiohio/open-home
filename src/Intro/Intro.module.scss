@@ -48,6 +48,7 @@ input[type=text], [type=email], [type=password], , [type=tel]{
   border: 1px solid $colorUi;
   outline: none;
   border-radius: 2px;
+  -webkit-appearance: none;
   &:focus{
     border: 1px solid $colorPrimaryLight;
   }
