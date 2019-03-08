@@ -1,5 +1,5 @@
-@import "../styles/global.scss";
-.Column{
+@import "../../styles/global.scss";
+.Column {
   display: flex;
   align-items: flex-start;
   justify-content: stretch;
@@ -7,13 +7,14 @@
   flex-basis: 100%;
   flex-shrink: 1;
   flex-grow: 1;
-  > .Row, > form{
+  > .Row,
+  > form {
     width: 100%;
   }
-  &.hasPadding{
-    padding: 0 .5rem;
+  &.hasPadding {
+    padding: 0 0.5rem;
   }
-  &.hasDivider{
+  &.hasDivider {
     border-left: 1px solid $colorUiLight;
   }
 }

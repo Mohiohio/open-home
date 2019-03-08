@@ -1,7 +1,6 @@
+@import "../../styles/_variables.scss";
 
-@import "../styles/_variables.scss";
-
-.Box{
+.Box {
   margin: 2rem 1rem;
   padding: 1rem;
   position: relative;
@@ -12,44 +11,48 @@
   width: 90%;
   min-height: 20rem;
   margin: 0 auto;
-  -webkit-box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.5), 0 0 60px 0 rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.5),
+    0 0 60px 0 rgba(0, 0, 0, 0.5);
   box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.5), 0 0 60px 0 rgba(0, 0, 0, 0.5);
 }
 
-
-h1{
+h1 {
   color: $colorPrimaryDark;
   font-weight: 300;
   text-align: center;
 }
-.actions{
-  padding: 0 .5rem;
+.actions {
+  padding: 0 0.5rem;
   display: flex;
   justify-content: stretch;
-  > button{
+  > button {
     flex-basis: 50%;
   }
 }
-label{
-  font-size: .75rem;
+label {
+  font-size: 0.75rem;
   color: $colorText;
-  opacity: .8;
+  opacity: 0.8;
   // text-transform: uppercase;
   font-weight: 600;
   margin: 0;
   padding: 0;
 }
-input[type=text], [type=email], [type=password], , [type=tel]{
-  margin: .5rem 0;
+input[type="text"],
+[type="email"],
+[type="password"],
+,
+[type="tel"] {
+  margin: 0.5rem 0;
   font-size: 1rem;
-  padding: .5rem .25rem;
+  padding: 0.5rem 0.25rem;
   width: 100%;
   background: $colorUiLightest;
   border: 1px solid $colorUi;
   outline: none;
   border-radius: 2px;
   -webkit-appearance: none;
-  &:focus{
+  &:focus {
     border: 1px solid $colorPrimaryLight;
   }
   &.hasError{
