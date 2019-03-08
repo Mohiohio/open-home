@@ -19,7 +19,9 @@
     "classnames": "^2.2.6",
     "date-fns": "^2.0.0-alpha.27",
     "postcss-modules": "^1.4.1",
+    "ramda": "^0.26.1",
     "react": "^16.8.4",
+    "react-dom": "^16.8.4",
     "react-select": "^2.4.1",
     "typeface-lato": "^0.0.54"
   },

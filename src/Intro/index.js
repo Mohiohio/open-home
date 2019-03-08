@@ -1,105 +1,131 @@
-import React from "react"
-import Column from '../Column';
-import Button from '../Button';
-import Row from '../Row';
-import styles from './Intro.module.scss';
+import React, { useState } from "react"
+import Column from "../Column"
+import Button from "../Button"
+import Row from "../Row"
+import styles from "./Intro.module.scss"
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faBuilding, faCheck, faTimes } from "@fortawesome/free-solid-svg-icons"
+import { validateFields } from "../validate"
 
-const Intro = ({ address, setDetails, gotToPage }) => {
+const validators = {
+  // firstName: v => (!v ? "Please supply a value for this field" : null),
+  // lastName: v => (!v ? "Please supply a value for this field" : null),
+  // email: v =>
+  //   v && v.indexOf("@") <= 0 ? "Please supply a valid email address" : null,
+  mobile: v => (!v ? "Please supply a value for this field" : null)
+}
+
+const Intro = ({ details, address, setDetails, goToPage }) => {
+  const [errors, setErrors] = useState({})
   return (
     <div className={styles.Box}>
       <Row>
-      <Column>
-      <h1><FontAwesomeIcon icon={faBuilding} color="hsl(288, 67%, 24%)" /> {address}</h1>
+        <Column>
+          <h1>
+            <FontAwesomeIcon icon={faBuilding} color="hsl(288, 67%, 24%)" />{" "}
+            {address}
+          </h1>
+          <p>Welcome to our Open Home at {address}</p>
           <p>
-            Welcome to our Open Home at {address}
+            Before you check out our handy work, please take a moment to
+            complete our Open Home Register.
           </p>
-          <p>
-            Before you check out our handy
-            work, please take a moment to complete our Open Home Register.
-          </p>
-      </Column>
+        </Column>
 
-      <Column hasDivider>  
-        <form>
-        <Row hasPadding={false}>
-          <Column>
-            <label>
-              First Name
-              </label>
+        <Column hasDivider>
+          <Row hasPadding={false}>
+            <Column>
+              <label>First Name</label>
               <input
-              type="text"
+                type="text"
+                value={details.firstName}
                 onChange={({ target: { value } }) =>
                   setDetails({ firstName: value })
                 }
               />
-        </Column>
-        <Column>
-        <label>
-          Last Name
-          </label>
-          <input
-            type="text"
-            onChange={({ target: { value } }) =>
-              setDetails({ lastName: value })
-            }
-          />
-        </Column>
-        </Row>
-        <Row>
-          <Column> 
-            <label>
-              Mobile
-              </label>
+              {errors.firstName && <span>{errors.firstName}</span>}
+            </Column>
+            <Column>
+              <label>Last Name</label>
+              <input
+                type="text"
+                value={details.lastName}
+                onChange={({ target: { value } }) =>
+                  setDetails({ lastName: value })
+                }
+              />
+              {errors.lastName && <span>{errors.lastName}</span>}
+            </Column>
+          </Row>
+          <Row>
+            <Column>
+              <label>Mobile</label>
               <input
                 type="tel"
-                onChange={({ target: { value } }) => setDetails({ phone: value })}
+                value={details.mobile}
+                onChange={({ target: { value } }) =>
+                  setDetails({ mobile: value })
+                }
               />
-            <label>
-              Email
-              </label>
+              {errors.mobile && <span>{errors.mobile}</span>}
+              <label>Email</label>
               <input
                 type="email"
-                onChange={({ target: { value } }) => setDetails({ email: value })}
+                value={details.email}
+                onChange={({ target: { value } }) =>
+                  setDetails({ email: value })
+                }
               />
-          </Column>
-        </Row>
-        <Row hasPadding={false}>
-          <Column>
-            <p>
-              If this awesome home doesn't cut the mustard for you, would you like
-              us to keep an eye out or let you know when we have another property
-              that might?
-            </p>
-          </Column>
-        </Row>
-        <Row>
-          <div className={styles.actions}>
-            <Button
-              isHighlighted
-              onClick={() => {
-                setDetails({ contact: true })
-                gotToPage("details")
-              }}
-            ><FontAwesomeIcon icon={faCheck} /> Yes Please
-            </Button>
-            <Button
-              isHighlighted={false}
-              onClick={() => {
-                setDetails({ contact: false })
-                gotToPage("thanks")
-              }}
-            ><FontAwesomeIcon icon={faTimes} /> No Thanks
-            </Button>
-          </div>
-        </Row>
-      </form>
-        
-      </Column>
+              {errors.email && <span>{errors.email}</span>}
+            </Column>
+          </Row>
+          <Row hasPadding={false}>
+            <Column>
+              <p>
+                If this awesome home doesn't cut the mustard for you, would you
+                like us to keep an eye out or let you know when we have another
+                property that might?
+              </p>
+            </Column>
+          </Row>
+          <Row>
+            <div className={styles.actions}>
+              <Button
+                isHighlighted
+                onClick={() => {
+                  const errors = validateFields(details, validators)
+                  if (errors) {
+                    setErrors(errors)
+                  } else {
+                    setErrors({})
+                    setDetails({ contact: true })
+                    goToPage("details")
+                  }
+                }}
+              >
+                <FontAwesomeIcon icon={faCheck} /> Yes Please
+              </Button>
+              <Button
+                isHighlighted={false}
+                onClick={() => {
+                  const errors = validateFields(details, validators)
+                  if (errors) {
+                    setErrors(errors)
+                  } else {
+                    setErrors({})
+                    setDetails({ contact: false })
+                    goToPage("thanks")
+                  }
+                }}
+              >
+                <FontAwesomeIcon icon={faTimes} /> No Thanks
+              </Button>
+            </div>
+          </Row>
+        </Column>
       </Row>
-      </div>
+    </div>
   )
 }
 

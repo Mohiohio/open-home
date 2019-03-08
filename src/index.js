@@ -1,17 +1,22 @@
 import React, { useReducer } from "react"
 import ReactDOM from "react-dom"
-import "typeface-lato";
+import "typeface-lato"
 import Intro from "./Intro"
 import Details from "./Details"
 import Thanks from "./Thanks"
-import styles from "./index.module.scss";
+import styles from "./index.module.scss"
 
 const initialState = {
-  page: "intro",
+  page: "thanks",
   address: {
     display: "20 Example Street"
   },
-  details: {}
+  details: {
+    firstName: "",
+    lastName: "",
+    mobile: "",
+    email: ""
+  }
 }
 
 const reducer = (state, action) => {
@@ -56,7 +61,8 @@ const App = () => {
           <div className={styles.Container}>
             <Intro
               address={state.address.display}
-              gotToPage={goToPage}
+              goToPage={goToPage}
+              details={state.details}
               setDetails={setDetails}
             />
           </div>
@@ -64,13 +70,17 @@ const App = () => {
       case "details":
         return (
           <div className={styles.Container}>
-            <Details gotToPage={goToPage} />
+            <Details
+              setDetails={setDetails}
+              details={state.details}
+              goToPage={goToPage}
+            />
           </div>
         )
       case "thanks":
-        return  (
+        return (
           <div className={styles.Container}>
-            <Thanks />
+            <Thanks details={state.details} goToPage={goToPage} />
           </div>
         )
     }
