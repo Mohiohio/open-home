@@ -25,8 +25,8 @@ const Intro = ({ details, address, setDetails, goToPage }) => {
   const [errors, setErrors] = useState({})
   return (
     <div className={styles.Box}>
-      <Row>
-        <Column>
+      <Row collapse>
+        <Column className={styles.onlyWide} collapse>
           <h1>
             <FontAwesomeIcon icon={faBuilding} color="hsl(288, 67%, 24%)" />{" "}
             {address}

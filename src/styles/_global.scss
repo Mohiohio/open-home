@@ -1,4 +1,6 @@
+@import "./_include-media.scss";
 @import "./_variables.scss";
+
 *{box-sizing: border-box}
 body {
   font-family: "Lato", "Century Gothic", CenturyGothic, "Apple Gothic", AppleGothic, "Open Sans", Helvetica, Arial, sans-serif;
@@ -7,6 +9,8 @@ body {
   min-height: 100vh;
   background: #27102d;
   background: linear-gradient(to bottom, #2b0a33 0px, #4c6b92 2000px);
+  margin: 0;
+  // padding: 1rem;
 }
 
 p{

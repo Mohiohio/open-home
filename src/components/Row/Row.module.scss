@@ -1,15 +1,50 @@
-@import "../../styles/global.scss";
+// @import "../../styles/global.scss";
+@import "../../styles/_global.scss";
+@import "../../styles/_include-media.scss";
+
+$small: 600px;
+$medium: 900px;
+
 .Row {
   display: flex;
   align-items: flex-start;
   justify-content: stretch;
   width: 100%;
-  >div{
-    flex-basis: 10%;
-    flex-grow: 1;
-    flex-shrink: 1;
-  }
+  // >div{
+  //   flex-basis: 10%;
+  //   flex-grow: 1;
+  //   flex-shrink: 1;
+  // }
   &.hasPadding {
     padding: 0.5rem 0;
+  }
+  &.collapse{
+    display: flex;
+    // align-items: flex-start;
+    // justify-content: stretch;
+    // display: block;
+    // @include media('>phone', '<=tablet') { 
+      @include media('<=tablet') { 
+        align-items: flex-start;
+        justify-content: flex-start;
+        flex-direction: column;
+        width: 100%;
+      >div{
+        padding: 0 !important;
+      }
+    }
+    // @media screen and (max-width: $medium) {
+    @include media('>tablet') { 
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: stretch;
+      width: 100%;
+      >div{
+        flex-basis: 10%;
+        flex-grow: 1;
+        flex-shrink: 1;
+      }
+    }
   }
 }
