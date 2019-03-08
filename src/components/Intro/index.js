@@ -6,7 +6,7 @@ import styles from "./Intro.module.scss"
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faBuilding, faCheck, faTimes } from "@fortawesome/free-solid-svg-icons"
-import { validateFields } from "../validate"
+import { validateFields } from "../../validate"
 
 const validators = {
   // firstName: v => (!v ? "Please supply a value for this field" : null),

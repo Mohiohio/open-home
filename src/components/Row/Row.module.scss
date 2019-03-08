@@ -1,14 +1,14 @@
-@import "../styles/global.scss";
-.Row{
+@import "../../styles/global.scss";
+.Row {
   display: flex;
   align-items: flex-start;
   justify-content: stretch;
-  >div{
+  > div {
     flex-basis: 10%;
     flex-grow: 1;
     flex-shrink: 1;
   }
-  &.hasPadding{
-    padding: .5rem 0;
+  &.hasPadding {
+    padding: 0.5rem 0;
   }
 }

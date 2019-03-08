@@ -1,9 +1,9 @@
 import React, { useReducer } from "react"
 import ReactDOM from "react-dom"
 import "typeface-lato"
-import Intro from "./Intro"
-import Details from "./Details"
-import Thanks from "./Thanks"
+import Intro from "./components/Intro"
+import Details from "./components/Details"
+import Thanks from "./components/Thanks"
 import styles from "./index.module.scss"
 
 const initialState = {
