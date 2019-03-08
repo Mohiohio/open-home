@@ -5,7 +5,7 @@ import Row from "../Row"
 import styles from "./Intro.module.scss"
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faBuilding, faCheck, faTimes } from "@fortawesome/free-solid-svg-icons"
+import { faBuilding, faCheck, faTimes, faExclamationCircle } from "@fortawesome/free-solid-svg-icons"
 import { validateFields } from "../validate"
 
 const validators = {
@@ -44,7 +44,7 @@ const Intro = ({ details, address, setDetails, goToPage }) => {
                   setDetails({ firstName: value })
                 }
               />
-              {errors.firstName && <span>{errors.firstName}</span>}
+              {errors.firstName && <span className={styles.validationError}><FontAwesomeIcon icon={faExclamationCircle} /> {errors.firstName}</span>}
             </Column>
             <Column>
               <label>Last Name</label>
@@ -55,20 +55,21 @@ const Intro = ({ details, address, setDetails, goToPage }) => {
                   setDetails({ lastName: value })
                 }
               />
-              {errors.lastName && <span>{errors.lastName}</span>}
+              {errors.lastName && <span className={styles.validationError}><FontAwesomeIcon icon={faExclamationCircle} /> {errors.lastName}</span>}
             </Column>
           </Row>
           <Row>
             <Column>
-              <label>Mobile</label>
+              <label>Mobile <span className={styles.required}>*</span></label>
               <input
                 type="tel"
                 value={details.mobile}
                 onChange={({ target: { value } }) =>
                   setDetails({ mobile: value })
                 }
+                className={errors.mobile && styles.hasError}
               />
-              {errors.mobile && <span>{errors.mobile}</span>}
+              {errors.mobile && <span className={styles.validationError}><FontAwesomeIcon icon={faExclamationCircle} /> {errors.mobile}</span>}
               <label>Email</label>
               <input
                 type="email"
@@ -77,7 +78,7 @@ const Intro = ({ details, address, setDetails, goToPage }) => {
                   setDetails({ email: value })
                 }
               />
-              {errors.email && <span>{errors.email}</span>}
+              {errors.email && <span className={styles.validationError}><FontAwesomeIcon icon={faExclamationCircle} /> {errors.email}</span>}
             </Column>
           </Row>
           <Row hasPadding={false}>

@@ -4,7 +4,7 @@ import Button from "../Button"
 import Row from "../Row"
 import styles from "./Details.module.scss"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faBuilding, faCheck, faTimes } from "@fortawesome/free-solid-svg-icons"
+import { faCheck, faClipboardList } from "@fortawesome/free-solid-svg-icons"
 
 const Details = ({ goToPage, details, setDetails }) => {
   return (
@@ -12,13 +12,16 @@ const Details = ({ goToPage, details, setDetails }) => {
       <Row>
         <Column>
           <h1>
-            <FontAwesomeIcon icon={faBuilding} color="hsl(288, 67%, 24%)" />{" "}
+            <FontAwesomeIcon icon={faClipboardList} color="hsl(288, 67%, 24%)" />{" "}
             Detail
           </h1>
-          <label>
+          <p>
             Okay, how about you give us a quick couple of hints about what
             you're looking for? of bedrooms Price range Anything else?
-          </label>
+          </p>
+          </Column>
+          <Column hasDivider>
+          <label>What are you looking for?</label>
           <textarea
             value={details.lookingFor}
             onChange={({ target: { value } }) =>
@@ -33,7 +36,7 @@ const Details = ({ goToPage, details, setDetails }) => {
                 goToPage("thanks")
               }}
             >
-              <FontAwesomeIcon icon={faCheck} /> OK
+              <FontAwesomeIcon icon={faCheck} /> Submit
             </Button>
           </div>
         </Column>
