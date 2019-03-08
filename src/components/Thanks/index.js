@@ -4,7 +4,7 @@ import Button from "../Button"
 import Row from "../Row"
 import styles from "./Thanks.module.scss"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faBuilding, faCheck, faTimes } from "@fortawesome/free-solid-svg-icons"
+import { faBuilding, faClipboardCheck } from "@fortawesome/free-solid-svg-icons"
 
 const Thanks = ({ details, goToPage }) => {
   const [showPrivacy, setShowPrivacy] = useState(false)
@@ -13,7 +13,7 @@ const Thanks = ({ details, goToPage }) => {
       <Row>
         <Column>
           <h1>
-            <FontAwesomeIcon icon={faBuilding} color="hsl(288, 67%, 24%)" />{" "}
+            <FontAwesomeIcon icon={faClipboardCheck} color="hsl(288, 67%, 24%)" />{" "}
             Thanks
           </h1>
           <p>
@@ -23,7 +23,10 @@ const Thanks = ({ details, goToPage }) => {
           </p>
           <p>
             We'll be giving you a call in the next couple of days so you can
-            tell us what you thought of our handy work. Thanks for coming along.
+            tell us what you thought of our handy work. 
+          </p>
+          <p>
+            Thanks for coming along.
           </p>
           <div className={styles.actions}>
             <Button
@@ -44,8 +47,10 @@ const Thanks = ({ details, goToPage }) => {
             </Button>
           </div>
         </Column>
+        <Column>
         {showPrivacy && (
           <div>
+            <h3>Privacy Policy</h3>
             <p>
               We collect personal information from you, including your name and
               contact information.
@@ -74,6 +79,7 @@ const Thanks = ({ details, goToPage }) => {
             </p>
           </div>
         )}
+        </Column>
       </Row>
     </div>
   )
