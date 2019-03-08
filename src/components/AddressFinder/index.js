@@ -1,26 +1,15 @@
-import React, { Component } from "react"
-import { omit } from "lodash/object"
-// import PropTypes from "prop-type"
+import React, { useEffect, useRef } from "react"
 
-class AddressFinder extends Component {
-  static defaultProps = {
-    options: {},
-    key: "KG9W3QH8P76YFJT4MVCU",
-    country: "NZ"
-  }
-
-  componentDidMount() {
-    this.downloadAF(() => {
-      this.withInputRef().then(el => {
-        if (this.props.onRef) {
-          this.props.onRef(el)
-        }
-        this.initAutocompleteWidget(el)
-      })
-    })
-  }
-
-  downloadAF = f => {
+const AddressFinder = ({
+  key,
+  country,
+  onSelect,
+  onRef,
+  options,
+  ...props
+}) => {
+  const inputRef = useRef(null)
+  const downloadAF = f => {
     var script = document.createElement("script")
     script.src = "https://api.addressfinder.io/assets/v3/widget.js"
     script.async = true
@@ -28,12 +17,10 @@ class AddressFinder extends Component {
     document.body.appendChild(script)
   }
 
-  initAutocompleteWidget = el => {
-    const { options, onSelect, key, country } = this.props
+  const initAutocompleteWidget = el => {
     const widget = new global.AddressFinder.Widget(el, key, country, {
       address_params: {
         post_box: "0",
-        // delivered: "1", best to omit this, or we don't get everything we can
         ...options
       }
     })
@@ -60,26 +47,40 @@ class AddressFinder extends Component {
     })
   }
 
-  withInputRef = () => {
+  const withInputRef = () => {
     return new Promise(resolve => {
-      if (this.inputRef) {
-        return resolve(this.inputRef)
+      if (inputRef.current) {
+        return resolve(inputRef.current)
       }
-      setTimeout(() => resolve(this.withInputRef()), 100)
+      setTimeout(() => resolve(withInputRef()), 100)
     })
   }
 
-  render() {
-    const props = omit(this.props, ["country", "options", "onSelect", "onRef"])
-    return (
-      <input
-        ref={el => (this.inputRef = el)}
-        type="text"
-        placeholder="Search for address"
-        {...props}
-      />
-    )
-  }
+  useEffect(() => {
+    downloadAF(() => {
+      withInputRef().then(el => {
+        if (onRef) {
+          onRef(el)
+        }
+        initAutocompleteWidget(el)
+      })
+    })
+  }, [])
+
+  return (
+    <input
+      ref={inputRef}
+      type="text"
+      placeholder="Search for address"
+      {...props}
+    />
+  )
+}
+
+AddressFinder.defaultProps = {
+  options: {},
+  key: "KG9W3QH8P76YFJT4MVCU",
+  country: "NZ"
 }
 
 export default AddressFinder

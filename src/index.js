@@ -4,10 +4,11 @@ import "typeface-lato"
 import Intro from "./components/Intro"
 import Details from "./components/Details"
 import Thanks from "./components/Thanks"
+import Setup from "./components/Setup"
 import styles from "./index.module.scss"
 
 const initialState = {
-  page: "intro",
+  page: "into",
   address: {
     display: "20 Example Street"
   },
@@ -77,6 +78,8 @@ const App = () => {
             <Thanks details={state.details} goToPage={goToPage} />
           </div>
         )
+      case "setup":
+        return <Setup />
       case "intro":
       default:
         return (
