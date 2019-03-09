@@ -2,7 +2,7 @@ import React, { Fragment, useState } from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faBuilding, faCheck, faTimes } from "@fortawesome/free-solid-svg-icons"
 import Row from "../../components/Row"
-import Column from "../../components/Row"
+import Column from "../../components/Column"
 
 import { validateFields } from "../../validate"
 import TextField from "../../components/TextField"
