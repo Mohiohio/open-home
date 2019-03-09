@@ -11,8 +11,9 @@ const Thanks = ({ details, goToPage }) => {
   const [showPrivacy, setShowPrivacy] = useState(false)
   return (
     <Box>
-      <Row>
-        <Column>
+      <Row collapse>
+        <Column className={styles.onlyWide} collapse>
+        
           <h1>
             <FontAwesomeIcon
               icon={faClipboardCheck}
