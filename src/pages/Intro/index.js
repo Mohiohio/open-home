@@ -2,7 +2,7 @@ import React, { Fragment, useState } from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faBuilding, faCheck, faTimes } from "@fortawesome/free-solid-svg-icons"
 import Row from "../../components/Row"
-import Column from "../../components/Row"
+import Column from "../../components/Column"
 
 import { validateFields } from "../../validate"
 import TextField from "../../components/TextField"
@@ -45,10 +45,9 @@ const Intro = ({ details, address, setDetails, goToPage }) => {
             complete our Open Home Register.
           </p>
         </Column>
-
         <Column hasDivider>
           <Row hasPadding={false}>
-            <Column>
+            <Column >
               <TextField
                 label="First Name"
                 value={details.firstName}
