@@ -90,9 +90,9 @@ const Intro = ({ details, address, setDetails, goToPage }) => {
           <Row hasPadding={false}>
             <Column>
               <p>
-                If this awesome home doesn't cut the mustard for you, would you
-                like us to keep an eye out or let you know when we have another
-                property that might?
+                If this awesome home doesn&apos;t cut the mustard for you, would
+                you like us to keep an eye out or let you know when we have
+                another property that might?
               </p>
             </Column>
           </Row>
