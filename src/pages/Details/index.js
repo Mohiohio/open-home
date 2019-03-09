@@ -1,12 +1,12 @@
 import React from "react"
-import Column from "../Column"
-import Button from "../Button"
-import Row from "../Row"
-import Box from "../Box"
-import styles from "./Details.module.scss"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCheck, faClipboardList } from "@fortawesome/free-solid-svg-icons"
-import TextArea from "../TextArea"
+import Column from "../../components/Column"
+import Button from "../../components/Button"
+import Row from "../../components/Row"
+import Box from "../../components/Box"
+import TextArea from "../../components/TextArea"
+import styles from "./Details.module.scss"
 
 const Details = ({ goToPage, details, setDetails }) => {
   return (

@@ -1,11 +1,11 @@
 import React, { useState } from "react"
-import Column from "../Column"
-import Button from "../Button"
-import Row from "../Row"
-import styles from "./Thanks.module.scss"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faClipboardCheck } from "@fortawesome/free-solid-svg-icons"
-import Box from "../Box"
+import Column from "../../components/Column"
+import Button from "../../components/Button"
+import Row from "../../components/Row"
+import Box from "../../components/Box"
+import styles from "./Thanks.module.scss"
 
 const Thanks = ({ details, goToPage }) => {
   const [showPrivacy, setShowPrivacy] = useState(false)

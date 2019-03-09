@@ -1,8 +1,8 @@
 import React from "react"
-import Row from "../Row"
-import Column from "../Column"
-import AddressFinder from "../AddressFinder"
-import Box from "../Box"
+import Row from "../../components/Row"
+import Column from "../../components/Column"
+import AddressFinder from "../../components/AddressFinder"
+import Box from "../../components/Box"
 
 const Setup = ({ setAddress }) => {
   return (

@@ -1,10 +1,10 @@
 import React, { useReducer } from "react"
 import ReactDOM from "react-dom"
 import "typeface-lato"
-import Intro from "./components/Intro"
-import Details from "./components/Details"
-import Thanks from "./components/Thanks"
-import Setup from "./components/Setup"
+import Intro from "./pages/Intro"
+import Details from "./pages/Details"
+import Thanks from "./pages/Thanks"
+import Setup from "./pages/Setup"
 import styles from "./index.module.scss"
 import { doAction } from "./utils/hooks"
 
@@ -96,7 +96,7 @@ const App = () => {
               setDetails={setDetails}
             />
 
-            <button onClick={() => goToPage("setup")}>Setup</button>
+            {/* <button onClick={() => goToPage("setup")}>Setup</button> */}
           </div>
         )
     }

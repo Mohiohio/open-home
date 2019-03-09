@@ -1,14 +1,14 @@
 import React, { Fragment, useState } from "react"
-import Column from "../Column"
-import Button from "../Button"
-import Row from "../Row"
-import styles from "./Intro.module.scss"
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faBuilding, faCheck, faTimes } from "@fortawesome/free-solid-svg-icons"
+import Row from "../../components/Row"
+import Column from "../../components/Row"
+
 import { validateFields } from "../../validate"
-import TextField from "../TextField"
-import Box from "../Box"
+import TextField from "../../components/TextField"
+import Button from "../../components/Button"
+import Box from "../../components/Box"
+import styles from "./Intro.module.scss"
 
 const validators = {
   // firstName: v => (!v ? "Please supply a value for this field" : null),
@@ -22,9 +22,9 @@ const Intro = ({ details, address, setDetails, goToPage }) => {
   const [errors, setErrors] = useState({})
 
   const validate = () => {
-    const errors = validateFields(details, validators)
-    if (errors) {
-      setErrors(errors)
+    const err = validateFields(details, validators)
+    if (err) {
+      setErrors(err)
       return false
     }
     setErrors({})
