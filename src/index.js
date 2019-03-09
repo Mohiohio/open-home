@@ -8,11 +8,11 @@ import Setup from "./pages/Setup"
 import styles from "./index.module.scss"
 import { doAction } from "./utils/hooks"
 
+const localStoreAddress = localStorage.getItem("address")
+
 const initialState = {
-  page: "into",
-  address: {
-    display: "20 Example Street"
-  },
+  page: localStoreAddress ? "intro" : "setup",
+  address: localStoreAddress ? JSON.parse(localStoreAddress) : {},
   details: {
     firstName: "",
     lastName: "",
@@ -35,6 +35,12 @@ const reducer = (state, action) => {
           ...state.details,
           ...action.details
         }
+      }
+    case "set-address":
+      localStorage.setItem("address", JSON.stringify(action.address))
+      return {
+        ...state,
+        address: action.address
       }
     default: {
       return state
@@ -82,7 +88,11 @@ const App = () => {
       case "setup":
         return (
           <div className={styles.Container}>
-            <Setup details={state.details} setDetails={setDetails} />
+            <Setup
+              initialAddress={state.address.fullAddress}
+              setAddress={address => dispatch({ type: "set-address", address })}
+              goToPage={goToPage}
+            />
           </div>
         )
       case "intro":
@@ -90,13 +100,11 @@ const App = () => {
         return (
           <div className={styles.Container}>
             <Intro
-              address={state.address.display}
+              address={state.address}
               goToPage={goToPage}
               details={state.details}
               setDetails={setDetails}
             />
-
-            {/* <button onClick={() => goToPage("setup")}>Setup</button> */}
           </div>
         )
     }
