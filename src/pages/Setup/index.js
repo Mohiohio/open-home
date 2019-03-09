@@ -12,8 +12,8 @@ const Setup = ({ initialAddress, setAddress, goToPage }) => {
     <Box>
       <Row>
         <Column>
-          <h1>Address</h1>
-          <AddressFinder value={initialAddress} onSelect={setAddress} />
+          <h1>What&apos;s the address?</h1>
+          <AddressFinder placeholder={initialAddress} onSelect={setAddress} />
           <Actions>
             <Button
               isHighlighted={true}

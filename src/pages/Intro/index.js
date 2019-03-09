@@ -36,10 +36,14 @@ const Intro = ({ details, address, setDetails, goToPage }) => {
       <Row collapse>
         <Column className={styles.onlyWide} collapse>
           <h1>
-            <FontAwesomeIcon icon={faBuilding} color="hsl(288, 67%, 24%)" />{" "}
-            {address}
+            <FontAwesomeIcon
+              icon={faBuilding}
+              color="hsl(288, 67%, 24%)"
+              onClick={() => goToPage("setup")}
+            />
+            {address.fullAddress}
           </h1>
-          <p>Welcome to our Open Home at {address}</p>
+          <p>Welcome to our Open Home at {address.address1}</p>
           <p>
             Before you check out our handy work, please take a moment to
             complete our Open Home Register.
@@ -47,7 +51,7 @@ const Intro = ({ details, address, setDetails, goToPage }) => {
         </Column>
         <Column hasDivider>
           <Row hasPadding={false}>
-            <Column >
+            <Column>
               <TextField
                 label="First Name"
                 value={details.firstName}

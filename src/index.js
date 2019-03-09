@@ -11,7 +11,7 @@ import { doAction } from "./utils/hooks"
 const localStoreAddress = localStorage.getItem("address")
 
 const initialState = {
-  page: "into",
+  page: localStoreAddress ? "intro" : "setup",
   address: localStoreAddress ? JSON.parse(localStoreAddress) : {},
   details: {
     firstName: "",
@@ -100,13 +100,11 @@ const App = () => {
         return (
           <div className={styles.Container}>
             <Intro
-              address={state.address.fullAddress}
+              address={state.address}
               goToPage={goToPage}
               details={state.details}
               setDetails={setDetails}
             />
-
-            <button onClick={() => goToPage("setup")}>Setup</button>
           </div>
         )
     }
