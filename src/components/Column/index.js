@@ -5,11 +5,14 @@ import styles from "./Column.module.scss"
 function Column({
   hasPadding = true,
   hasDivider = false,
-  children
+  collapse = false,
+  children,
+  className,
 }) {
   return (
     <div 
-      className={classNames(styles.Column, {
+      className={classNames(styles.Column, className, {
+        [styles.collapse]: !!collapse,
         [styles.hasPadding]: !!hasPadding,
         [styles.hasDivider]: !!hasDivider,
       })}	
