@@ -6,13 +6,17 @@ import Box from "../../components/Box"
 import Actions from "../../components/Actions"
 import Button from "../../components/Button"
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faMapMarked } from "@fortawesome/free-solid-svg-icons"
+import styles from "./Setup.module.scss"
+
 const Setup = ({ initialAddress, setAddress, goToPage }) => {
   // const [address, setAddress] = useState(initialAddress)
   return (
     <Box>
       <Row>
         <Column>
-          <h1>What&apos;s the address?</h1>
+          <h1><div className={styles.heroIcon}><FontAwesomeIcon icon={faMapMarked} /></div> What&apos;s the address?</h1>
           <AddressFinder placeholder={initialAddress} onSelect={setAddress} />
           <Actions>
             <Button

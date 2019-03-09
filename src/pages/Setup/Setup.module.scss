@@ -35,6 +35,9 @@ h1 {
   .heroIcon{
     flex-basis: 10%;
     margin-right: .5rem;
+    svg path{
+      color: $colorPrimaryLight;
+    }
   }
 }
 h5{
@@ -43,15 +46,7 @@ h5{
   padding:0;
   font-weight: normal;
 }
-.actions {
-  padding: 0 0.5rem;
-  display: flex;
-  justify-content: stretch;
-  width: 100%;
-  > button {
-    flex-basis: 50%;
-  }
-}
+
 label {
   font-size: 0.75rem;
   color: $colorText;

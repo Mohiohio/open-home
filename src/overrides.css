@@ -1,0 +1,9 @@
+body > ul{  
+  border-top: 0px solid white !important;
+}
+
+body > ul > li{
+  padding: .25rem !important;
+  font-size: .75rem !important;
+}
+

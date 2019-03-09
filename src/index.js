@@ -7,7 +7,7 @@ import Thanks from "./pages/Thanks"
 import Setup from "./pages/Setup"
 import styles from "./index.module.scss"
 import { doAction } from "./utils/hooks"
-
+import "./overrides.css"
 const localStoreAddress = localStorage.getItem("address")
 
 const initialState = {
