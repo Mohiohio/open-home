@@ -1,0 +1,52 @@
+@import "../../styles/_variables.scss";
+
+label {
+  font-size: 0.75rem;
+  color: $colorText;
+  opacity: 0.8;
+  // text-transform: uppercase;
+  font-weight: 600;
+  margin: 0;
+  padding: 0;
+}
+input[type="text"],
+[type="email"],
+[type="password"],
+[type="tel"] {
+  margin: 0.5rem 0;
+  font-size: 1rem;
+  padding: 0.5rem 0.25rem;
+  width: 100%;
+  background: $colorUiLightest;
+  border: 1px solid $colorUi;
+  outline: none;
+  border-radius: 2px;
+  -webkit-appearance: none;
+  &:focus {
+    border: 1px solid $colorPrimaryLight;
+  }
+  &.hasError {
+    border: 1px solid $colorDanger;
+  }
+}
+
+textarea {
+  margin: 0.5rem 0;
+  font-size: 1rem;
+  padding: 0.5rem;
+  min-height: 12rem;
+  width: 100%;
+  background: $colorUiLightest;
+  border: 1px solid $colorUi;
+  outline: none;
+  border-radius: 2px;
+  &:focus {
+    border: 1px solid $colorPrimaryLight;
+  }
+}
+
+.validationError {
+  color: $colorDanger;
+  padding: 0 0 1rem 0;
+  font-size: 0.75rem;
+}

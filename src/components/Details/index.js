@@ -2,31 +2,34 @@ import React from "react"
 import Column from "../Column"
 import Button from "../Button"
 import Row from "../Row"
+import Box from "../Box"
 import styles from "./Details.module.scss"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCheck, faClipboardList } from "@fortawesome/free-solid-svg-icons"
+import TextArea from "../TextArea"
 
 const Details = ({ goToPage, details, setDetails }) => {
   return (
-    <div className={styles.Box}>
+    <Box>
       <Row>
         <Column>
           <h1>
-            <FontAwesomeIcon icon={faClipboardList} color="hsl(288, 67%, 24%)" />{" "}
+            <FontAwesomeIcon
+              icon={faClipboardList}
+              color="hsl(288, 67%, 24%)"
+            />{" "}
             Detail
           </h1>
           <p>
             Okay, how about you give us a quick couple of hints about what
             you're looking for? of bedrooms Price range Anything else?
           </p>
-          </Column>
-          <Column hasDivider>
-          <label>What are you looking for?</label>
-          <textarea
+        </Column>
+        <Column hasDivider>
+          <TextArea
+            label="What are you looking for?"
             value={details.lookingFor}
-            onChange={({ target: { value } }) =>
-              setDetails({ lookingFor: value })
-            }
+            setValue={lookingFor => setDetails({ lookingFor })}
           />
           <div className={styles.actions}>
             <Button
@@ -41,7 +44,7 @@ const Details = ({ goToPage, details, setDetails }) => {
           </div>
         </Column>
       </Row>
-    </div>
+    </Box>
   )
 }
 

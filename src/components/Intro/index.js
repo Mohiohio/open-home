@@ -1,17 +1,14 @@
-import React, { useState } from "react"
+import React, { Fragment, useState } from "react"
 import Column from "../Column"
 import Button from "../Button"
 import Row from "../Row"
 import styles from "./Intro.module.scss"
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import {
-  faBuilding,
-  faCheck,
-  faTimes,
-  faExclamationCircle
-} from "@fortawesome/free-solid-svg-icons"
+import { faBuilding, faCheck, faTimes } from "@fortawesome/free-solid-svg-icons"
 import { validateFields } from "../../validate"
+import TextField from "../TextField"
+import Box from "../Box"
 
 const validators = {
   // firstName: v => (!v ? "Please supply a value for this field" : null),
@@ -23,8 +20,19 @@ const validators = {
 
 const Intro = ({ details, address, setDetails, goToPage }) => {
   const [errors, setErrors] = useState({})
+
+  const validate = () => {
+    const errors = validateFields(details, validators)
+    if (errors) {
+      setErrors(errors)
+      return false
+    }
+    setErrors({})
+    return true
+  }
+
   return (
-    <div className={styles.Box}>
+    <Box>
       <Row>
         <Column>
           <h1>
@@ -41,69 +49,42 @@ const Intro = ({ details, address, setDetails, goToPage }) => {
         <Column hasDivider>
           <Row hasPadding={false}>
             <Column>
-              <label>First Name</label>
-              <input
-                type="text"
+              <TextField
+                label="First Name"
                 value={details.firstName}
-                onChange={({ target: { value } }) =>
-                  setDetails({ firstName: value })
-                }
+                setValue={firstName => setDetails({ firstName })}
+                error={errors.firstName}
               />
-              {errors.firstName && (
-                <span className={styles.validationError}>
-                  <FontAwesomeIcon icon={faExclamationCircle} />{" "}
-                  {errors.firstName}
-                </span>
-              )}
             </Column>
             <Column>
-              <label>Last Name</label>
-              <input
-                type="text"
+              <TextField
+                label="Last Name"
                 value={details.lastName}
-                onChange={({ target: { value } }) =>
-                  setDetails({ lastName: value })
-                }
+                setValue={lastName => setDetails({ lastName })}
+                error={errors.lastName}
               />
-              {errors.lastName && (
-                <span className={styles.validationError}>
-                  <FontAwesomeIcon icon={faExclamationCircle} />{" "}
-                  {errors.lastName}
-                </span>
-              )}
             </Column>
           </Row>
           <Row>
             <Column>
-              <label>
-                Mobile <span className={styles.required}>*</span>
-              </label>
-              <input
+              <TextField
+                label={
+                  <Fragment>
+                    Mobile <span className={styles.required}>*</span>
+                  </Fragment>
+                }
                 type="tel"
                 value={details.mobile}
-                onChange={({ target: { value } }) =>
-                  setDetails({ mobile: value })
-                }
-                className={errors.mobile && styles.hasError}
+                setValue={mobile => setDetails({ mobile })}
+                error={errors.mobile}
               />
-              {errors.mobile && (
-                <span className={styles.validationError}>
-                  <FontAwesomeIcon icon={faExclamationCircle} /> {errors.mobile}
-                </span>
-              )}
-              <label>Email</label>
-              <input
+              <TextField
+                label="Email"
                 type="email"
                 value={details.email}
-                onChange={({ target: { value } }) =>
-                  setDetails({ email: value })
-                }
+                setValue={email => setDetails({ email })}
+                error={errors.email}
               />
-              {errors.email && (
-                <span className={styles.validationError}>
-                  <FontAwesomeIcon icon={faExclamationCircle} /> {errors.email}
-                </span>
-              )}
             </Column>
           </Row>
           <Row hasPadding={false}>
@@ -120,11 +101,7 @@ const Intro = ({ details, address, setDetails, goToPage }) => {
               <Button
                 isHighlighted
                 onClick={() => {
-                  const errors = validateFields(details, validators)
-                  if (errors) {
-                    setErrors(errors)
-                  } else {
-                    setErrors({})
+                  if (validate()) {
                     setDetails({ contact: true })
                     goToPage("details")
                   }
@@ -135,11 +112,7 @@ const Intro = ({ details, address, setDetails, goToPage }) => {
               <Button
                 isHighlighted={false}
                 onClick={() => {
-                  const errors = validateFields(details, validators)
-                  if (errors) {
-                    setErrors(errors)
-                  } else {
-                    setErrors({})
+                  if (validate()) {
                     setDetails({ contact: false })
                     goToPage("thanks")
                   }
@@ -151,7 +124,7 @@ const Intro = ({ details, address, setDetails, goToPage }) => {
           </Row>
         </Column>
       </Row>
-    </div>
+    </Box>
   )
 }
 

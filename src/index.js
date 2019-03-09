@@ -6,6 +6,7 @@ import Details from "./components/Details"
 import Thanks from "./components/Thanks"
 import Setup from "./components/Setup"
 import styles from "./index.module.scss"
+import { doAction } from "./utils/hooks"
 
 const initialState = {
   page: "into",
@@ -56,7 +57,7 @@ const App = () => {
   }
 
   const saveDetails = details => {
-    console.log("saving details now", details)
+    doAction("save-details", details)
   }
 
   const renderPage = () => {
@@ -79,7 +80,11 @@ const App = () => {
           </div>
         )
       case "setup":
-        return <Setup />
+        return (
+          <div className={styles.Container}>
+            <Setup details={state.details} setDetails={setDetails} />
+          </div>
+        )
       case "intro":
       default:
         return (
@@ -90,6 +95,8 @@ const App = () => {
               details={state.details}
               setDetails={setDetails}
             />
+
+            <button onClick={() => goToPage("setup")}>Setup</button>
           </div>
         )
     }
