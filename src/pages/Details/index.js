@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCheck, faClipboardList } from "@fortawesome/free-solid-svg-icons"
 import Column from "../../components/Column"
 import Button from "../../components/Button"
-import Row from "../../components/Column"
+import Row from "../../components/Row"
 import Box from "../../components/Box"
 import TextArea from "../../components/TextArea"
 import styles from "./Details.module.scss"
@@ -11,9 +11,9 @@ import styles from "./Details.module.scss"
 const Details = ({ goToPage, details, setDetails }) => {
   return (
     <Box>
-      <Row>
-        <Column>
-          <h1>
+       <Row collapse>
+        <Column className={styles.onlyWide} collapse>
+        <h1>
             <FontAwesomeIcon
               icon={faClipboardList}
               color="hsl(288, 67%, 24%)"
