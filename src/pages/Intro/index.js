@@ -45,10 +45,9 @@ const Intro = ({ details, address, setDetails, goToPage }) => {
             complete our Open Home Register.
           </p>
         </Column>
-
         <Column hasDivider>
           <Row hasPadding={false}>
-            <Column>
+            <Column >
               <TextField
                 label="First Name"
                 value={details.firstName}
