@@ -1,9 +1,10 @@
 .actions {
-  padding: 0 0.5rem;
+  padding: 0 0 0 0;
   display: flex;
   justify-content: stretch;
   width: 100%;
   > button {
-    flex-basis: 50%;
+    flex-basis: 100%;
+    flex-shrink: 1;
   }
 }

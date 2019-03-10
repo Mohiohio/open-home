@@ -10,6 +10,7 @@ import { doAction } from "./utils/hooks"
 import useRouter from "./hooks/useRouter"
 import "./plugins/myproperties"
 
+import "./overrides.css"
 const localStoreAddress = localStorage.getItem("address")
 
 const initialState = {

@@ -37,13 +37,16 @@ const Intro = ({ details, address, setDetails, goToPage }) => {
       <Row collapse>
         <Column className={styles.onlyWide} collapse>
           <h1>
+            <div className={styles.heroIcon}>
             <FontAwesomeIcon
               icon={faBuilding}
               color="hsl(288, 67%, 24%)"
               onClick={() => goToPage("setup")}
             />
-            {address.fullAddress}
+            </div>
+            {address.address1}
           </h1>
+          <h5>{address.fullAddress}</h5>
           <p>Welcome to our Open Home at {address.address1}</p>
           <p>
             Before you check out our handy work, please take a moment to
