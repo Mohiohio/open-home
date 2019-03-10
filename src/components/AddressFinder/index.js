@@ -77,10 +77,12 @@ const AddressFinder = ({
   )
 }
 
+const key = process.env.ADDRESS_FINDER_KEY
+
 AddressFinder.defaultProps = {
   options: {},
-  key: "KG9W3QH8P76YFJT4MVCU",
-  country: "NZ"
+  country: "NZ",
+  key
 }
 
 export default AddressFinder

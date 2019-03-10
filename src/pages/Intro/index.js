@@ -15,7 +15,8 @@ const validators = {
   // lastName: v => (!v ? "Please supply a value for this field" : null),
   // email: v =>
   //   v && v.indexOf("@") <= 0 ? "Please supply a valid email address" : null,
-  mobile: v => (!v ? "Please supply a value for this field" : null)
+  mobile: v =>
+    !String(v).match(/[0-9]+/) ? "Please supply a phone number" : null
 }
 
 const Intro = ({ details, address, setDetails, goToPage }) => {

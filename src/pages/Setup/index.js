@@ -18,7 +18,7 @@ const Setup = ({ initialAddress, setAddress, goToPage }) => {
             <Button
               isHighlighted={true}
               onClick={() => {
-                goToPage("intro")
+                goToPage("/")
               }}
             >
               Done

@@ -7,11 +7,13 @@ import Thanks from "./pages/Thanks"
 import Setup from "./pages/Setup"
 import styles from "./index.module.scss"
 import { doAction } from "./utils/hooks"
+import useRouter from "./hooks/useRouter"
+import "./plugins/myproperties"
 
 const localStoreAddress = localStorage.getItem("address")
 
 const initialState = {
-  page: localStoreAddress ? "intro" : "setup",
+  page: localStoreAddress ? "" : "setup",
   address: localStoreAddress ? JSON.parse(localStoreAddress) : {},
   details: {
     firstName: "",
@@ -50,10 +52,7 @@ const reducer = (state, action) => {
 
 const App = () => {
   const [state, dispatch] = useReducer(reducer, initialState)
-
-  const goToPage = page => {
-    dispatch({ type: "set-page", page })
-  }
+  const [page, goToPage] = useRouter()
 
   const setDetails = details => {
     dispatch({
@@ -63,11 +62,12 @@ const App = () => {
   }
 
   const saveDetails = details => {
-    doAction("save-details", details)
+    doAction("save-details", { details, address: state.address })
+    // dispatch({ type: "set-details", details: {} })
   }
 
   const renderPage = () => {
-    switch (state.page) {
+    switch (page) {
       case "details":
         return (
           <div className={styles.Container}>
@@ -95,7 +95,7 @@ const App = () => {
             />
           </div>
         )
-      case "intro":
+      case "":
       default:
         return (
           <div className={styles.Container}>

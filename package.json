@@ -19,6 +19,7 @@
     "autoprefixer": "^9.4.7",
     "classnames": "^2.2.6",
     "date-fns": "^2.0.0-alpha.27",
+    "history": "^4.7.2",
     "postcss-modules": "^1.4.1",
     "ramda": "^0.26.1",
     "react": "^16.8.4",

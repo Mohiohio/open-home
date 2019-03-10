@@ -13,7 +13,6 @@ const Thanks = ({ details, goToPage }) => {
     <Box>
       <Row collapse>
         <Column className={styles.onlyWide} collapse>
-        
           <h1>
             <FontAwesomeIcon
               icon={faClipboardCheck}
@@ -35,7 +34,7 @@ const Thanks = ({ details, goToPage }) => {
             <Button
               isHighlighted={true}
               onClick={() => {
-                goToPage("intro")
+                goToPage("/")
               }}
             >
               Done
