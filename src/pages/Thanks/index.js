@@ -7,7 +7,7 @@ import Row from "../../components/Row"
 import Box from "../../components/Box"
 import styles from "./Thanks.module.scss"
 
-const Thanks = ({ details, goToPage }) => {
+const Thanks = ({ details, goToPage, onDone }) => {
   const [showPrivacy, setShowPrivacy] = useState(false)
   return (
     <Box>
@@ -34,6 +34,7 @@ const Thanks = ({ details, goToPage }) => {
             <Button
               isHighlighted={true}
               onClick={() => {
+                onDone()
                 goToPage("/")
               }}
             >

@@ -62,8 +62,8 @@ const App = () => {
     })
   }
 
-  const saveDetails = details => {
-    doAction("save-details", { details, address: state.address })
+  const saveDetails = () => {
+    doAction("save-details", { details: state.details, address: state.address })
     // dispatch({ type: "set-details", details: {} })
   }
 
@@ -76,14 +76,18 @@ const App = () => {
               setDetails={setDetails}
               details={state.details}
               goToPage={goToPage}
+              saveDetails={saveDetails}
             />
           </div>
         )
       case "thanks":
-        saveDetails(state.details)
         return (
           <div className={styles.Container}>
-            <Thanks details={state.details} goToPage={goToPage} />
+            <Thanks
+              details={state.details}
+              goToPage={goToPage}
+              onDone={saveDetails}
+            />
           </div>
         )
       case "setup":

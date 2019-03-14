@@ -11,9 +11,9 @@ import styles from "./Details.module.scss"
 const Details = ({ goToPage, details, setDetails }) => {
   return (
     <Box>
-       <Row collapse>
+      <Row collapse>
         <Column className={styles.onlyWide} collapse>
-        <h1>
+          <h1>
             <FontAwesomeIcon
               icon={faClipboardList}
               color="hsl(288, 67%, 24%)"
