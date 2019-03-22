@@ -11,10 +11,10 @@ import useRouter from "./hooks/useRouter"
 import "./plugins/myproperties"
 
 import "./overrides.css"
+import Responses from "./pages/Responses"
 const localStoreAddress = localStorage.getItem("address")
 
 const initialState = {
-  page: localStoreAddress ? "" : "setup",
   address: localStoreAddress ? JSON.parse(localStoreAddress) : {},
   details: {
     firstName: "",
@@ -26,11 +26,6 @@ const initialState = {
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case "set-page":
-      return {
-        ...state,
-        page: action.page
-      }
     case "set-details":
       return {
         ...state,
@@ -53,7 +48,7 @@ const reducer = (state, action) => {
 
 const App = () => {
   const [state, dispatch] = useReducer(reducer, initialState)
-  const [page, goToPage] = useRouter()
+  const [location, goToPage] = useRouter(localStorage.address ? "" : "setup")
 
   const setDetails = details => {
     dispatch({
@@ -64,58 +59,52 @@ const App = () => {
 
   const saveDetails = () => {
     doAction("save-details", { details: state.details, address: state.address })
-    // dispatch({ type: "set-details", details: {} })
+    dispatch({ type: "set-details", details: {} })
   }
 
-  const renderPage = () => {
+  const renderPage = page => {
     switch (page) {
-      case "details":
+      case "/details":
         return (
-          <div className={styles.Container}>
-            <Details
-              setDetails={setDetails}
-              details={state.details}
-              goToPage={goToPage}
-              saveDetails={saveDetails}
-            />
-          </div>
+          <Details
+            setDetails={setDetails}
+            details={state.details}
+            goToPage={goToPage}
+            saveDetails={saveDetails}
+          />
         )
-      case "thanks":
+      case "/thanks":
         return (
-          <div className={styles.Container}>
-            <Thanks
-              details={state.details}
-              goToPage={goToPage}
-              onDone={saveDetails}
-            />
-          </div>
+          <Thanks
+            details={state.details}
+            goToPage={goToPage}
+            onDone={saveDetails}
+          />
         )
-      case "setup":
+      case "/setup":
         return (
-          <div className={styles.Container}>
-            <Setup
-              initialAddress={state.address.fullAddress}
-              setAddress={address => dispatch({ type: "set-address", address })}
-              goToPage={goToPage}
-            />
-          </div>
+          <Setup
+            initialAddress={state.address.fullAddress}
+            setAddress={address => dispatch({ type: "set-address", address })}
+            goToPage={goToPage}
+          />
         )
-      case "":
+      case "/responses":
+        return <Responses address={state.address} goToPage={goToPage} />
+      case "/":
       default:
         return (
-          <div className={styles.Container}>
-            <Intro
-              address={state.address}
-              goToPage={goToPage}
-              details={state.details}
-              setDetails={setDetails}
-            />
-          </div>
+          <Intro
+            address={state.address}
+            goToPage={goToPage}
+            details={state.details}
+            setDetails={setDetails}
+          />
         )
     }
   }
 
-  return <div>{renderPage()}</div>
+  return <div className={styles.Container}>{renderPage(location.pathname)}</div>
 }
 
 ReactDOM.render(<App />, document.getElementById("root"))

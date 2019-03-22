@@ -1,20 +1,27 @@
-import { addAction } from "../utils/hooks"
+import { addAction, addFilter } from "../utils/hooks"
 import request from "../utils/request"
 
 const SAVE_ENDPOINT = process.env.SAVE_ENDPOINT
+const requestDefaults = {
+  credentials: "include",
+  headers: {
+    "Content-Type": "application/json"
+  },
+  method: "GET"
+}
 
-addAction("save-details", data => {
-  if (SAVE_ENDPOINT) {
-    console.log("sending")
-    request(SAVE_ENDPOINT, {
+if (SAVE_ENDPOINT) {
+  addAction("save-details", data => {
+    request(`${SAVE_ENDPOINT}/open-home`, {
+      ...requestDefaults,
       method: "POST",
-      mode: "no-cors",
-      headers: {
-        "Content-Type": "application/json"
-      },
       body: JSON.stringify(data)
     })
-  } else {
-    console.warn("No save endpoint")
-  }
-})
+  })
+
+  addFilter("load-responses", () => {
+    return request(`${SAVE_ENDPOINT}/open-home-detail`, requestDefaults)
+  })
+} else {
+  console.warn("No save endpoint")
+}

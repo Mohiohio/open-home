@@ -31,8 +31,8 @@ module.exports = shipit => {
     shipit.local("yarn install --non-interactive", { cwd: shipit.workspace })
   )
 
-  shipit.blTask("npm:build", () => {
-    shipit.local(`cp .env ${shipit.workspace}`)
-    shipit.local("npm run build", { cwd: shipit.workspace })
+  shipit.blTask("npm:build", async () => {
+    await shipit.local(`cp .env ${shipit.workspace}`)
+    return shipit.local("npm run build", { cwd: shipit.workspace })
   })
 }
