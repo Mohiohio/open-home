@@ -20,7 +20,7 @@ if (SAVE_ENDPOINT) {
   })
 
   addFilter("load-responses", () => {
-    return request(`${SAVE_ENDPOINT}/open-home-detail`, requestDefaults)
+    return request(`${SAVE_ENDPOINT}/open-home/detail`, requestDefaults)
   })
 } else {
   console.warn("No save endpoint")

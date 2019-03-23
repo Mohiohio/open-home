@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from "react"
+import PropTypes from "prop-types"
 
 const AddressFinder = ({
   key,
@@ -78,6 +79,14 @@ const AddressFinder = ({
 }
 
 const key = process.env.ADDRESS_FINDER_KEY
+
+AddressFinder.propTypes = {
+  key: PropTypes.string.isRequired,
+  country: PropTypes.string.isRequired,
+  onSelect: PropTypes.func.isRequired,
+  onRef: PropTypes.func,
+  options: PropTypes.object
+}
 
 AddressFinder.defaultProps = {
   options: {},

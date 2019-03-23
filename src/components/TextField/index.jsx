@@ -1,4 +1,5 @@
 import React from "react"
+import PropTypes from "prop-types"
 import FieldWrap from "../FieldWrap"
 
 const TextField = ({ label, value, setValue, type = "text", error }) => {
@@ -7,10 +8,18 @@ const TextField = ({ label, value, setValue, type = "text", error }) => {
       <input
         type={type}
         value={value}
-        onChange={({ target: { value } }) => setValue(value)}
+        onChange={e => setValue(e.target.value, e)}
       />
     </FieldWrap>
   )
+}
+
+TextField.propTypes = {
+  label: PropTypes.string,
+  value: PropTypes.string,
+  type: PropTypes.string,
+  setValue: PropTypes.func.isRequired,
+  error: PropTypes.string
 }
 
 export default TextField

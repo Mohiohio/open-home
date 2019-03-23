@@ -1,4 +1,5 @@
 import React from "react"
+import PropTypes from "prop-types"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCheck, faClipboardList } from "@fortawesome/free-solid-svg-icons"
 import Column from "../../components/Column"
@@ -22,7 +23,7 @@ const Details = ({ goToPage, details, setDetails }) => {
           </h1>
           <p>
             Okay, how about you give us a quick couple of hints about what
-            you're looking for? of bedrooms Price range Anything else?
+            you&apos;re looking for? of bedrooms Price range Anything else?
           </p>
         </Column>
         <Column hasDivider>
@@ -46,6 +47,12 @@ const Details = ({ goToPage, details, setDetails }) => {
       </Row>
     </Box>
   )
+}
+
+Details.propTypes = {
+  goToPage: PropTypes.func.isRequired,
+  details: PropTypes.string,
+  setDetails: PropTypes.func.isRequired
 }
 
 export default Details

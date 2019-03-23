@@ -1,4 +1,5 @@
 import React, { Fragment } from "react"
+import PropTypes from "prop-types"
 import styles from "./FieldWrap.module.scss"
 
 import { faExclamationCircle } from "@fortawesome/free-solid-svg-icons"
@@ -7,7 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 const FieldWrap = ({ label, children, error }) => {
   return (
     <Fragment>
-      <label>{label}</label>
+      {!!label && <label>{label}</label>}
       {children}
       {!!error && (
         <span className={styles.validationError}>
@@ -16,6 +17,12 @@ const FieldWrap = ({ label, children, error }) => {
       )}
     </Fragment>
   )
+}
+
+FieldWrap.propTypes = {
+  label: PropTypes.string,
+  children: PropTypes.node.isRequired,
+  error: PropTypes.node
 }
 
 export default FieldWrap

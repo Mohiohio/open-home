@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import PropTypes from "prop-types"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faClipboardCheck } from "@fortawesome/free-solid-svg-icons"
 import Column from "../../components/Column"
@@ -26,8 +27,8 @@ const Thanks = ({ details, goToPage, onDone }) => {
             the one for you!!
           </p>
           <p>
-            We'll be giving you a call in the next couple of days so you can
-            tell us what you thought of our handy work.
+            We&apos;ll be giving you a call in the next couple of days so you
+            can tell us what you thought of our handy work.
           </p>
           <p>Thanks for coming along.</p>
           <div className={styles.actions}>
@@ -65,8 +66,8 @@ const Thanks = ({ details, goToPage, onDone }) => {
               </p>
               <p>
                 Providing some information is optional. If you choose not to
-                enter an email address, we'll make sure you don't get any
-                updates on what we're working on.
+                enter an email address, we&apos;ll make sure you don&apos;t get
+                any updates on what we&apos;re working on.
               </p>
               <p>
                 You have the right to ask for a copy of any personal information
@@ -76,9 +77,9 @@ const Thanks = ({ details, goToPage, onDone }) => {
                 howdy@myproperties.co.nz.
               </p>
               <p>
-                We won't burden you with useless emails and we'll always give
-                you the option to opt out later if you decide you don't want to
-                hear from us again.
+                We won&apos;t burden you with useless emails and we&apos;ll
+                always give you the option to opt out later if you decide you
+                don&apos;t want to hear from us again.
               </p>
             </div>
           )}
@@ -86,6 +87,14 @@ const Thanks = ({ details, goToPage, onDone }) => {
       </Row>
     </Box>
   )
+}
+
+Thanks.propTypes = {
+  details: PropTypes.shape({
+    firstName: PropTypes.string
+  }),
+  goToPage: PropTypes.func.isRequired,
+  onDone: PropTypes.func.isRequired
 }
 
 export default Thanks

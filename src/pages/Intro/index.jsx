@@ -1,4 +1,5 @@
 import React, { Fragment, useState } from "react"
+import PropTypes from "prop-types"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faBuilding, faCheck, faTimes } from "@fortawesome/free-solid-svg-icons"
 import Row from "../../components/Row"
@@ -38,11 +39,11 @@ const Intro = ({ details, address, setDetails, goToPage }) => {
         <Column className={styles.onlyWide} collapse>
           <h1>
             <div className={styles.heroIcon}>
-            <FontAwesomeIcon
-              icon={faBuilding}
-              color="hsl(288, 67%, 24%)"
-              onClick={() => goToPage("setup")}
-            />
+              <FontAwesomeIcon
+                icon={faBuilding}
+                color="hsl(288, 67%, 24%)"
+                onClick={() => goToPage("setup")}
+              />
             </div>
             {address.address1}
           </h1>
@@ -133,6 +134,13 @@ const Intro = ({ details, address, setDetails, goToPage }) => {
       </Row>
     </Box>
   )
+}
+
+Intro.propTypes = {
+  details: PropTypes.object,
+  address: PropTypes.object,
+  setDetails: PropTypes.func.isRequired,
+  goToPage: PropTypes.func.isRequired
 }
 
 export default Intro

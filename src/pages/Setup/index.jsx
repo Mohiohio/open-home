@@ -1,4 +1,5 @@
-import React, { useState } from "react"
+import React from "react"
+import PropTypes from "prop-types"
 import Row from "../../components/Row"
 import Column from "../../components/Column"
 import AddressFinder from "../../components/AddressFinder"
@@ -11,12 +12,16 @@ import { faMapMarked } from "@fortawesome/free-solid-svg-icons"
 import styles from "./Setup.module.scss"
 
 const Setup = ({ initialAddress, setAddress, goToPage }) => {
-  // const [address, setAddress] = useState(initialAddress)
   return (
     <Box>
       <Row>
         <Column>
-          <h1><div className={styles.heroIcon}><FontAwesomeIcon icon={faMapMarked} /></div> What&apos;s the address?</h1>
+          <h1>
+            <div className={styles.heroIcon}>
+              <FontAwesomeIcon icon={faMapMarked} />
+            </div>{" "}
+            What&apos;s the address?
+          </h1>
           <AddressFinder placeholder={initialAddress} onSelect={setAddress} />
           <Actions>
             <Button
@@ -32,6 +37,12 @@ const Setup = ({ initialAddress, setAddress, goToPage }) => {
       </Row>
     </Box>
   )
+}
+
+Setup.propTypes = {
+  initialAddress: PropTypes.string,
+  setAddress: PropTypes.func.isRequired,
+  goToPage: PropTypes.func.isRequired
 }
 
 export default Setup

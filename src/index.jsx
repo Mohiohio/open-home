@@ -90,7 +90,7 @@ const App = () => {
           />
         )
       case "/responses":
-        return <Responses address={state.address} goToPage={goToPage} />
+        return <Responses goToPage={goToPage} />
       case "/":
       default:
         return (
