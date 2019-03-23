@@ -51,7 +51,9 @@ const Details = ({ goToPage, details, setDetails }) => {
 
 Details.propTypes = {
   goToPage: PropTypes.func.isRequired,
-  details: PropTypes.string,
+  details: PropTypes.shape({
+    lookingFor: PropTypes.string
+  }),
   setDetails: PropTypes.func.isRequired
 }
 

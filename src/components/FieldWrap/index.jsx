@@ -20,7 +20,7 @@ const FieldWrap = ({ label, children, error }) => {
 }
 
 FieldWrap.propTypes = {
-  label: PropTypes.string,
+  label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   children: PropTypes.node.isRequired,
   error: PropTypes.node
 }

@@ -11,7 +11,7 @@ const TextArea = ({ label, value, setValue, error }) => {
 }
 
 TextArea.propTypes = {
-  label: PropTypes.string,
+  label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   value: PropTypes.string,
   setValue: PropTypes.func.isRequired,
   error: PropTypes.string

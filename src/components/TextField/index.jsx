@@ -15,7 +15,7 @@ const TextField = ({ label, value, setValue, type = "text", error }) => {
 }
 
 TextField.propTypes = {
-  label: PropTypes.string,
+  label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   value: PropTypes.string,
   type: PropTypes.string,
   setValue: PropTypes.func.isRequired,

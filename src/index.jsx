@@ -34,6 +34,11 @@ const reducer = (state, action) => {
           ...action.details
         }
       }
+    case "reset-form":
+      return {
+        ...state,
+        details: initialState.details
+      }
     case "set-address":
       localStorage.setItem("address", JSON.stringify(action.address))
       return {
@@ -59,7 +64,7 @@ const App = () => {
 
   const saveDetails = () => {
     doAction("save-details", { details: state.details, address: state.address })
-    dispatch({ type: "set-details", details: {} })
+    dispatch({ type: "reset-form" })
   }
 
   const renderPage = page => {
