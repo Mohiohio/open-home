@@ -18,7 +18,7 @@ const Setup = ({ initialAddress, setAddress, goToPage }) => {
         <Column>
           <h1>
             <div className={styles.heroIcon}>
-              <FontAwesomeIcon icon={faMapMarked} />
+              <FontAwesomeIcon icon={faMapMarked} color="#777" />
             </div>{" "}
             What&apos;s the address?
           </h1>

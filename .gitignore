@@ -5,3 +5,6 @@ dist/
 .env
 npm-debug.log
 tags
+yarn-error.log
+tmp/
+.npmrc

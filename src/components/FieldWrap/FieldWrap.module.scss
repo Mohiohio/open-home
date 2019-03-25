@@ -23,7 +23,7 @@ input[type="text"],
   border-radius: 2px;
   -webkit-appearance: none;
   &:focus {
-    border: 1px solid $colorPrimaryLight;
+    border: 1px solid $colorPrimaryDark;
   }
   &.hasError {
     border: 1px solid $colorDanger;

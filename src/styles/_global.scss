@@ -8,7 +8,8 @@ body {
   font-weight: normal;
   min-height: 100vh;
   background: #27102d;
-  background: linear-gradient(to bottom, #2b0a33 0px, #4c6b92 2000px);
+  // background: linear-gradient(to bottom, #2b0a33 0px, #4c6b92 2000px);
+  background: linear-gradient(to bottom, #27102d 0px, #3d262c 160px, #5e4a43 600px, #807d6e 1000px, #958375 1600px, #a7927d 2000px);
   margin: 0;
   // padding: 1rem;
 }
@@ -16,6 +17,17 @@ body {
 p{
   max-width: 47rem;
   margin: .5rem 0;
+}
+h1{
+  color: #222;
+  font-weight: normal;
+  .heroIcon{
+    flex-basis: 10%;
+    margin-right: .5rem;
+    svg path{
+      color: $colorMid;
+    }
+  }
 }
 h3{
   margin: 0;

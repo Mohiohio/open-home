@@ -15,10 +15,13 @@ const Details = ({ goToPage, details, setDetails }) => {
       <Row collapse>
         <Column className={styles.onlyWide} collapse>
           <h1>
-            <FontAwesomeIcon
-              icon={faClipboardList}
-              color="hsl(288, 67%, 24%)"
-            />{" "}
+            <div className={styles.heroIcon}>
+              <FontAwesomeIcon
+                icon={faClipboardList}
+                // color="hsl(288, 67%, 24%)"
+                color="hsl(185, 100%, 55%)"
+              />
+            </div>{" "}
             Detail
           </h1>
           <p>

@@ -4,12 +4,21 @@ $colorBackground: #eee;
 $colorBlack: hsl(0, 0%, 0%);
 $colorWhite: hsl(0, 0%, 100%);
 $colorText: #333;
-$colorPrimaryLight: hsl(288, 67%, 24%);
-$colorPrimary: hsl(288, 67%, 12%);
-$colorPrimaryDark: hsl(288, 67%, 5%);
+$colorMid: #777;
+
+// $colorPrimaryLight: hsl(288, 67%, 24%);
+// $colorPrimary: hsl(288, 67%, 12%);
+// $colorPrimaryDark: hsl(288, 67%, 5%);
+
+$colorPrimaryLight: hsl(185, 100%, 55%);
+$colorPrimary: hsl(185, 100%, 40%); 
+$colorPrimaryDark: hsl(185, 100%, 40%);
+
+
 $colorUi: #aaa;
 $colorUiLight: #ddd;
 $colorUiLightest: #f9f9f9;
+
 
 $colorDanger: red;
 $colorSuccess: lime;
