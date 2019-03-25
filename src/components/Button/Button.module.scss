@@ -30,7 +30,7 @@
   // MODIFIERS
   &.isHighlighted {
     background: $colorPrimaryLight;
-    color: $colorWhite;
+    color: $colorBlack;
     .iconWrap {
       svg path {
         fill: $colorWhite;
@@ -74,7 +74,7 @@
       cursor: pointer;
       &.isHighlighted {
         background: $colorPrimary;
-        color: #fff;
+        color: $colorBlack;
         .iconWrap {
           svg path {
             fill: $colorText;
