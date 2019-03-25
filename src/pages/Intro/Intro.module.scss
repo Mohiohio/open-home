@@ -1,3 +1,4 @@
+@import "../../styles/_global.scss";
 @import "../../styles/_variables.scss";
 
 .Box {
@@ -25,8 +26,8 @@
 }
 
 h1 {
-  color: $colorPrimaryDark;
-  font-weight: 300;
+  // color: $colorPrimaryDark;
+  // font-weight: 300;
   text-align: center;
   display: flex;
   align-items: center;
@@ -64,7 +65,6 @@ label {
 input[type="text"],
 [type="email"],
 [type="password"],
-,
 [type="tel"] {
   margin: 0.5rem 0;
   font-size: 1rem;

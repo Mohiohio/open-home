@@ -41,7 +41,8 @@ const Intro = ({ details, address, setDetails, goToPage }) => {
             <div className={styles.heroIcon}>
               <FontAwesomeIcon
                 icon={faBuilding}
-                color="hsl(288, 67%, 24%)"
+                // color="hsl(288, 67%, 24%)"
+                color="hsl(185, 100%, 55%)"
                 onClick={() => goToPage("setup")}
               />
             </div>

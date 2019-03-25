@@ -15,10 +15,12 @@ const Thanks = ({ details, goToPage, onDone }) => {
       <Row collapse>
         <Column className={styles.onlyWide} collapse>
           <h1>
-            <FontAwesomeIcon
-              icon={faClipboardCheck}
-              color="hsl(288, 67%, 24%)"
-            />{" "}
+            <div className={styles.heroIcon}>
+              <FontAwesomeIcon
+                icon={faClipboardCheck}
+                color="hsl(185, 100%, 55%)"
+              />
+            </div>{" "}
             Thanks
           </h1>
           <p>
