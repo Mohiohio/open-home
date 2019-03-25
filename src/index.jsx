@@ -1,17 +1,13 @@
 import React, { useReducer } from "react"
 import ReactDOM from "react-dom"
 import "typeface-lato"
-import Intro from "./pages/Intro"
-import Details from "./pages/Details"
-import Thanks from "./pages/Thanks"
-import Setup from "./pages/Setup"
 import styles from "./index.module.scss"
-import { doAction } from "./utils/hooks"
+import { doAction, applyFilters } from "./utils/hooks"
 import useRouter from "./hooks/useRouter"
-import "./plugins/myproperties"
+import "./plugins/MyProperties"
 
 import "./overrides.css"
-import Responses from "./pages/Responses"
+import "./routes"
 const localStoreAddress = localStorage.getItem("address")
 
 const initialState = {
@@ -67,49 +63,17 @@ const App = () => {
     dispatch({ type: "reset-form" })
   }
 
-  const renderPage = page => {
-    switch (page) {
-      case "/details":
-        return (
-          <Details
-            setDetails={setDetails}
-            details={state.details}
-            goToPage={goToPage}
-            saveDetails={saveDetails}
-          />
-        )
-      case "/thanks":
-        return (
-          <Thanks
-            details={state.details}
-            goToPage={goToPage}
-            onDone={saveDetails}
-          />
-        )
-      case "/setup":
-        return (
-          <Setup
-            initialAddress={state.address.fullAddress}
-            setAddress={address => dispatch({ type: "set-address", address })}
-            goToPage={goToPage}
-          />
-        )
-      case "/responses":
-        return <Responses goToPage={goToPage} />
-      case "/":
-      default:
-        return (
-          <Intro
-            address={state.address}
-            goToPage={goToPage}
-            details={state.details}
-            setDetails={setDetails}
-          />
-        )
-    }
-  }
-
-  return <div className={styles.Container}>{renderPage(location.pathname)}</div>
+  return (
+    <div className={styles.Container}>
+      {applyFilters("route", null, location, {
+        state,
+        dispatch,
+        setDetails,
+        goToPage,
+        saveDetails
+      })}
+    </div>
+  )
 }
 
 ReactDOM.render(<App />, document.getElementById("root"))

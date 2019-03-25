@@ -1,7 +1,11 @@
-import { addAction, addFilter } from "../utils/hooks"
-import request from "../utils/request"
+import { addAction, addFilter } from "../../utils/hooks"
+import request from "../../utils/request"
+// import addRoute from "../../utils/addRoute"
 
-const SAVE_ENDPOINT = process.env.SAVE_ENDPOINT
+const SAVE_ENDPOINT = window.location.origin.indexOf("localhost")
+  ? "https://www.myproperties.mohiohio.com"
+  : window.location.origin.replace("open-home", "www")
+
 const requestDefaults = {
   credentials: "include",
   headers: {

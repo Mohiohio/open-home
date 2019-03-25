@@ -12,6 +12,22 @@ import { faMapMarked } from "@fortawesome/free-solid-svg-icons"
 import styles from "./Setup.module.scss"
 
 const Setup = ({ initialAddress, setAddress, goToPage }) => {
+  // const onRef = ref => {
+  //   console.log(ref)
+  //   ref.value = "20 King Street Grey Lynn Auckland"
+  //   // // var e = document.createEvent("HTMLEvents")
+  //   // e.initEvent("keyup", true, true)
+  //   var event = new Event("keyup", {
+  //     bubbles: true,
+  //     cancelable: true
+  //   })
+
+  //   ref.dispatchEvent(event)
+  //   // ref.dispatchEvent(e)
+  //   // ref.focus()
+  //   // ref.trigger('')
+  // }
+
   return (
     <Box>
       <Row>
@@ -22,7 +38,11 @@ const Setup = ({ initialAddress, setAddress, goToPage }) => {
             </div>{" "}
             What&apos;s the address?
           </h1>
-          <AddressFinder placeholder={initialAddress} onSelect={setAddress} />
+          <AddressFinder
+            placeholder={initialAddress}
+            onSelect={setAddress}
+            // onRef={onRef}
+          />
           <Actions>
             <Button
               isHighlighted={true}
