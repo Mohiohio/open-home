@@ -1,4 +1,4 @@
-import React, { useReducer } from "react"
+import React, { useReducer, useEffect } from "react"
 import ReactDOM from "react-dom"
 import "typeface-lato"
 import styles from "./index.module.scss"
@@ -12,12 +12,14 @@ const localStoreAddress = localStorage.getItem("address")
 
 const initialState = {
   address: localStoreAddress ? JSON.parse(localStoreAddress) : {},
+  authenticated: null,
   details: {
     firstName: "",
     lastName: "",
     mobile: "",
     email: ""
-  }
+  },
+  responses: []
 }
 
 const reducer = (state, action) => {
@@ -41,6 +43,11 @@ const reducer = (state, action) => {
         ...state,
         address: action.address
       }
+    case "set-authenticated":
+      return {
+        ...state,
+        authenticated: action.authenticated
+      }
     default: {
       return state
     }
@@ -63,7 +70,18 @@ const App = () => {
     dispatch({ type: "reset-form" })
   }
 
-  return (
+  useEffect(() => {
+    Promise.resolve(applyFilters("is-authenticated", true)).then(
+      authenticated => {
+        dispatch({ type: "set-authenticated", authenticated })
+      }
+    )
+  }, [])
+
+  if (state.authenticated === null) {
+    return <p>Loading...</p>
+  }
+  return state.authenticated ? (
     <div className={styles.Container}>
       {applyFilters("route", null, location, {
         state,
@@ -73,6 +91,8 @@ const App = () => {
         saveDetails
       })}
     </div>
+  ) : (
+    <p>Please login first</p>
   )
 }
 
