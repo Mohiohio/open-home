@@ -1,0 +1,41 @@
+@import "../../styles/global.scss";
+
+.Loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fade 0.3s ease-in-out 1;
+  color: $colorUiLight;
+  .iconWrap {
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: loadingRotate 0.8s linear infinite;
+  }
+  p {
+    text-align: center;
+    opacity: 0.8;
+    font-weight: 300;
+  }
+
+}
+
+@keyframes loadingRotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

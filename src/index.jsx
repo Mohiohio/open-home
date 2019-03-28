@@ -8,6 +8,7 @@ import "./plugins/MyProperties"
 
 import "./overrides.css"
 import "./routes"
+import Loading from "./components/Loading"
 const localStoreAddress = localStorage.getItem("address")
 
 const initialState = {
@@ -79,7 +80,11 @@ const App = () => {
   }, [])
 
   if (state.authenticated === null) {
-    return <p>Loading...</p>
+    return (
+      <div className={styles.loading}>
+        <Loading text="Loading..." />
+      </div>
+    )
   }
   return state.authenticated ? (
     <div className={styles.Container}>
@@ -92,7 +97,12 @@ const App = () => {
       })}
     </div>
   ) : (
-    <p>Please login first</p>
+    <div className={styles.Container}>
+      <div className={styles.notLoggedIn}>
+        <h4>Not logged in</h4>
+        <p>Please login first</p>
+      </div>
+    </div>
   )
 }
 
