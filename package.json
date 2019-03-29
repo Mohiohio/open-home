@@ -40,7 +40,7 @@
   },
   "scripts": {
     "dev": "parcel dev src/index.html",
-    "build": "parcel build src/index.html --experimental-scope-hoisting",
+    "build": "parcel build src/index.html",
     "deploy:stage": "shipit staging deploy"
   },
   "lint-staged": {
