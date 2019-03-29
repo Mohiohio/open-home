@@ -62,7 +62,7 @@ const reducer = (state, action) => {
 
 const App = () => {
   const [state, dispatch] = useReducer(reducer, initialState)
-  const [location, goToPage] = useRouter(localStoreAddress ? "" : "setup")
+  const [location, goToPage] = useRouter()
 
   const setDetails = details => {
     dispatch({
