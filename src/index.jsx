@@ -72,11 +72,7 @@ const App = () => {
   }
 
   useEffect(() => {
-    Promise.resolve(applyFilters("is-authenticated", true)).then(
-      authenticated => {
-        dispatch({ type: "set-authenticated", authenticated })
-      }
-    )
+    doAction("init", { dispatch, state, goToPage })
   }, [])
 
   if (state.authenticated === null) {
@@ -98,10 +94,13 @@ const App = () => {
     </div>
   ) : (
     <div className={styles.Container}>
-      <div className={styles.notLoggedIn}>
-        <h4>Not logged in</h4>
-        <p>Please login first</p>
-      </div>
+      {applyFilters(
+        "login-prompt",
+        <div className={styles.notLoggedIn}>
+          <h4>Not logged in</h4>
+          <p>Please login first</p>
+        </div>
+      )}
     </div>
   )
 }
