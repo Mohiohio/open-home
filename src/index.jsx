@@ -1,5 +1,6 @@
 import React, { useReducer, useEffect } from "react"
 import ReactDOM from "react-dom"
+import { isEmpty } from "ramda"
 import "typeface-lato"
 import styles from "./index.module.scss"
 import { doAction, applyFilters } from "./utils/hooks"
@@ -39,7 +40,11 @@ const reducer = (state, action) => {
         details: initialState.details
       }
     case "set-address":
-      localStorage.setItem("address", JSON.stringify(action.address))
+      if (isEmpty(action.address)) {
+        localStorage.removeItem("address")
+      } else {
+        localStorage.setItem("address", JSON.stringify(action.address))
+      }
       return {
         ...state,
         address: action.address
@@ -57,7 +62,7 @@ const reducer = (state, action) => {
 
 const App = () => {
   const [state, dispatch] = useReducer(reducer, initialState)
-  const [location, goToPage] = useRouter(localStorage.address ? "" : "setup")
+  const [location, goToPage] = useRouter(localStoreAddress ? "" : "setup")
 
   const setDetails = details => {
     dispatch({

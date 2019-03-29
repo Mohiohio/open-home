@@ -26,8 +26,9 @@ const Details = ({ goToPage, details, setDetails }) => {
           </h1>
           <p>
             Okay, how about you give us a quick couple of hints about what
-            you&apos;re looking for? of bedrooms Price range Anything else?
+            you&apos;re looking for?
           </p>
+          <p>Number of bedrooms, Price range, Anything else?</p>
         </Column>
         <Column hasDivider>
           <TextArea
