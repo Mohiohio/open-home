@@ -1,4 +1,5 @@
-import React, { Fragment, useState } from "react"
+import React, { Fragment, useState, useEffect } from "react"
+import { isEmpty } from "ramda"
 import PropTypes from "prop-types"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faBuilding, faCheck, faTimes } from "@fortawesome/free-solid-svg-icons"
@@ -32,6 +33,12 @@ const Intro = ({ details, address, setDetails, goToPage }) => {
     setErrors({})
     return true
   }
+
+  useEffect(() => {
+    if (isEmpty(address)) {
+      goToPage("setup")
+    }
+  }, [address])
 
   return (
     <Box>

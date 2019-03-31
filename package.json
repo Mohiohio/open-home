@@ -25,7 +25,9 @@
     "babel-eslint": "^10.0.1",
     "classnames": "^2.2.6",
     "date-fns": "^2.0.0-alpha.27",
+    "file-saver": "^2.0.1",
     "history": "^4.9.0",
+    "papaparse": "^4.6.3",
     "postcss-modules": "^1.4.1",
     "prop-types": "^15.7.2",
     "ramda": "^0.26.1",
@@ -39,7 +41,8 @@
   "scripts": {
     "dev": "parcel dev src/index.html",
     "build": "parcel build src/index.html",
-    "deploy:stage": "shipit staging deploy"
+    "deploy:stage": "shipit staging deploy",
+    "deploy": "shipit live deploy"
   },
   "lint-staged": {
     "*.{js,jsx}": [

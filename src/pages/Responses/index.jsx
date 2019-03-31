@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react"
+import { unparse } from "papaparse"
+import { saveAs } from "file-saver"
 import ReactDataGrid from "react-data-grid"
 import { Toolbar, Data, Filters } from "react-data-grid-addons"
 import { applyFilters } from "../../utils/hooks"
@@ -6,14 +8,14 @@ import Box from "../../components/Box"
 import Row from "../../components/Row"
 import Column from "../../components/Column"
 
+const selectors = Data.Selectors
+const { AutoCompleteFilter } = Filters
+
 const defaultColumnProperties = {
   filterable: true,
   width: 160,
   filterRenderer: AutoCompleteFilter
 }
-
-const selectors = Data.Selectors
-const { AutoCompleteFilter } = Filters
 
 const columns = [
   { key: "address", name: "Address" },
@@ -67,6 +69,13 @@ function Responses() {
   }, [])
 
   const filteredRows = getRows(rows, filters)
+
+  const downloadCSV = () => {
+    const csv = unparse(filteredRows)
+    const blob = new Blob([csv], { type: "text/csv;charset=utf-8" })
+    saveAs(blob, "responses.csv")
+  }
+
   return (
     <Box>
       <Row>
@@ -77,9 +86,14 @@ function Responses() {
             rowGetter={i => filteredRows[i]}
             rowsCount={rows.length}
             minHeight={500}
+            maxWidth={900}
             toolbar={
               <Toolbar enableFilter={true}>
-                <button type="button" className="btn" onClick={console.log}>
+                <button
+                  type="button"
+                  className="btn"
+                  onClick={() => downloadCSV()}
+                >
                   Export CSV
                 </button>
               </Toolbar>
