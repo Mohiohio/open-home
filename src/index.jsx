@@ -9,6 +9,9 @@ import "./plugins/MyProperties"
 import "./overrides.css"
 import "./routes"
 import Loading from "./components/Loading"
+import logoIcon from "./assets/logo-icon-only--white.png"
+import logoWords from "./assets/logo-words-only.png"
+
 const localStoreAddress = localStorage.getItem("address")
 
 const initialState = {
@@ -88,6 +91,10 @@ const App = () => {
   }
   return state.authenticated ? (
     <div className={styles.Container}>
+      <div className={styles.logoWrap}>
+        <img src={logoIcon} alt="" />
+        <img src={logoWords} alt="" />
+      </div>
       {applyFilters("route", null, location, {
         state,
         dispatch,
