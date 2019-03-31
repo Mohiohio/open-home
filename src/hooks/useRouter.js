@@ -33,7 +33,6 @@ function useRouter(initial = "") {
         setLocation(cloneLocation())
       }
     }
-    setLocation(location)
   }, [])
 
   return [location, setRoute]

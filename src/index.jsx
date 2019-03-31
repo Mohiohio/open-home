@@ -80,7 +80,7 @@ const App = () => {
   }
 
   useEffect(() => {
-    doAction("init", { dispatch, state, goToPage })
+    doAction("init", { dispatch, goToPage })
   }, [])
 
   if (state.authenticated === null) {
