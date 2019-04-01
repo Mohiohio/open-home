@@ -1,0 +1,17 @@
+@import "../../styles/_global.scss";
+@import "../../styles/_variables.scss";
+
+h1 {
+  // color: $colorPrimaryDark;
+  // font-weight: 300;
+  text-align: center;
+}
+.actions {
+  // padding: 0 .5rem;
+  display: flex;
+  justify-content: stretch;
+  width: 100%;
+  > button {
+    flex-basis: 50%;
+  }
+}
