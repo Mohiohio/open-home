@@ -2,7 +2,7 @@ import React, { Fragment, useState, useEffect } from "react"
 import { isEmpty } from "ramda"
 import PropTypes from "prop-types"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faBuilding, faCheck, faTimes } from "@fortawesome/free-solid-svg-icons"
+import { faBuilding, faCheck } from "@fortawesome/free-solid-svg-icons"
 import Row from "../../components/Row"
 import Column from "../../components/Column"
 
@@ -13,8 +13,8 @@ import Box from "../../components/Box"
 import styles from "./Intro.module.scss"
 
 const validators = {
-  // firstName: v => (!v ? "Please supply a value for this field" : null),
-  // lastName: v => (!v ? "Please supply a value for this field" : null),
+  firstName: v => (!v ? "Please supply a value for this field" : null),
+  lastName: v => (!v ? "Please supply a value for this field" : null),
   // email: v =>
   //   v && v.indexOf("@") <= 0 ? "Please supply a valid email address" : null,
   mobile: v =>
@@ -59,14 +59,18 @@ const Intro = ({ details, address, setDetails, goToPage }) => {
           <p>Welcome to our Open Home at {address.address1}</p>
           <p>
             Before you check out our handy work, please take a moment to
-            complete our Open Home Register.
+            complete our register.
           </p>
         </Column>
         <Column hasDivider>
           <Row hasPadding={false}>
             <Column>
               <TextField
-                label="First Name"
+                label={
+                  <Fragment>
+                    First Name <span className={styles.required}>*</span>
+                  </Fragment>
+                }
                 value={details.firstName}
                 setValue={firstName => setDetails({ firstName })}
                 error={errors.firstName}
@@ -74,7 +78,11 @@ const Intro = ({ details, address, setDetails, goToPage }) => {
             </Column>
             <Column>
               <TextField
-                label="Last Name"
+                label={
+                  <Fragment>
+                    Last Name <span className={styles.required}>*</span>
+                  </Fragment>
+                }
                 value={details.lastName}
                 setValue={lastName => setDetails({ lastName })}
                 error={errors.lastName}
@@ -103,38 +111,17 @@ const Intro = ({ details, address, setDetails, goToPage }) => {
               />
             </Column>
           </Row>
-          <Row hasPadding={false}>
-            <Column>
-              <p>
-                If this awesome home doesn&apos;t cut the mustard for you, would
-                you like us to keep an eye out or let you know when we have
-                another property that might?
-              </p>
-            </Column>
-          </Row>
           <Row>
             <div className={styles.actions}>
               <Button
                 isHighlighted
                 onClick={() => {
                   if (validate()) {
-                    setDetails({ contact: true })
-                    goToPage("details")
+                    goToPage("register")
                   }
                 }}
               >
-                <FontAwesomeIcon icon={faCheck} /> Yes Please
-              </Button>
-              <Button
-                isHighlighted={false}
-                onClick={() => {
-                  if (validate()) {
-                    setDetails({ contact: false })
-                    goToPage("thanks")
-                  }
-                }}
-              >
-                <FontAwesomeIcon icon={faTimes} /> No Thanks
+                <FontAwesomeIcon icon={faCheck} /> Next
               </Button>
             </div>
           </Row>

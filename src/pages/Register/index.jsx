@@ -1,15 +1,18 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faCheck, faClipboardList } from "@fortawesome/free-solid-svg-icons"
+import {
+  faCheck,
+  faClipboardList,
+  faTimes
+} from "@fortawesome/free-solid-svg-icons"
 import Column from "../../components/Column"
 import Row from "../../components/Row"
 import Button from "../../components/Button"
 import Box from "../../components/Box"
-import TextArea from "../../components/TextArea"
-import styles from "./Details.module.scss"
+import styles from "./Register.module.scss"
 
-const Details = ({ goToPage, details, setDetails }) => {
+const Register = ({ goToPage, setDetails }) => {
   return (
     <Box>
       <Row collapse>
@@ -22,29 +25,31 @@ const Details = ({ goToPage, details, setDetails }) => {
                 color="hsl(185, 100%, 55%)"
               />
             </div>{" "}
-            Detail
+            Register
           </h1>
           <p>
-            Okay, how about you give us a quick couple of hints about what
-            you&apos;re looking for?
+            If this awesome home doesn&apos;t cut the mustard for you, would you
+            like us to keep an eye out or let you know when we have another
+            property that might?
           </p>
-          <p>For example - number of bedrooms, price range, area etc</p>
-        </Column>
-        <Column hasDivider>
-          <TextArea
-            label="What are you looking for?"
-            value={details.lookingFor}
-            setValue={lookingFor => setDetails({ lookingFor })}
-          />
           <div className={styles.actions}>
             <Button
               isHighlighted
               onClick={() => {
                 setDetails({ contact: true })
+                goToPage("details")
+              }}
+            >
+              <FontAwesomeIcon icon={faCheck} /> Yes Please
+            </Button>
+            <Button
+              isHighlighted={false}
+              onClick={() => {
+                setDetails({ contact: false })
                 goToPage("thanks")
               }}
             >
-              <FontAwesomeIcon icon={faCheck} /> Submit
+              <FontAwesomeIcon icon={faTimes} /> No Thanks
             </Button>
           </div>
         </Column>
@@ -53,12 +58,9 @@ const Details = ({ goToPage, details, setDetails }) => {
   )
 }
 
-Details.propTypes = {
+Register.propTypes = {
   goToPage: PropTypes.func.isRequired,
-  details: PropTypes.shape({
-    lookingFor: PropTypes.string
-  }),
   setDetails: PropTypes.func.isRequired
 }
 
-export default Details
+export default Register

@@ -3,6 +3,7 @@ import Details from "./pages/Details"
 import Thanks from "./pages/Thanks"
 import Setup from "./pages/Setup"
 import Responses from "./pages/Responses"
+import Register from "./pages/Register"
 import Intro from "./pages/Intro"
 import addRoute from "./utils/addRoute"
 
@@ -17,6 +18,10 @@ addRoute("/details", ({ state, setDetails, saveDetails, goToPage }) => (
 
 addRoute("/thanks", ({ state, goToPage, saveDetails }) => (
   <Thanks details={state.details} goToPage={goToPage} onDone={saveDetails} />
+))
+
+addRoute("/register", ({ goToPage, setDetails }) => (
+  <Register goToPage={goToPage} setDetails={setDetails} />
 ))
 
 addRoute("/setup", ({ state, goToPage, dispatch }) => (
