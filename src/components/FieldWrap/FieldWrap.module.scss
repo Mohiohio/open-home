@@ -30,6 +30,18 @@ input[type="text"],
   }
 }
 
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: $colorUi;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: $colorUi;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color: $colorUi;
+}
+:-moz-placeholder { /* Firefox 18- */
+  color: $colorUi;
+}
 textarea {
   margin: 0.5rem 0;
   font-size: 1rem;
