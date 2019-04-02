@@ -54,7 +54,7 @@ function Responses() {
   const [filters, setFilters] = useState({})
   const [rows, setRows] = useState([])
   useEffect(() => {
-    applyFilters("load-responses", rows)
+    applyFilters("load-responses")
       .then(data => {
         setRows(
           data.map(row => ({
@@ -67,7 +67,7 @@ function Responses() {
       .catch(e => {
         console.error(e)
       })
-  }, [rows])
+  }, [])
 
   const filteredRows = getRows(rows, filters)
 
