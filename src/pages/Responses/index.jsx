@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react"
 import { unparse } from "papaparse"
 import { saveAs } from "file-saver"
 import ReactDataGrid from "react-data-grid"
-import { Toolbar, Data, Filters } from "react-data-grid-addons"
+import { Toolbar, Data } from "react-data-grid-addons"
 import { applyFilters } from "../../utils/hooks"
 import Box from "../../components/Box"
 import Row from "../../components/Row"
@@ -10,12 +10,12 @@ import Column from "../../components/Column"
 import styles from "./Responses.module.scss"
 
 const selectors = Data.Selectors
-const { AutoCompleteFilter } = Filters
+// const { AutoCompleteFilter } = Filters
 
 const defaultColumnProperties = {
   filterable: true,
-  width: 160,
-  filterRenderer: AutoCompleteFilter
+  width: 160
+  // filterRenderer: AutoCompleteFilter
 }
 
 const columns = [
@@ -88,7 +88,7 @@ function Responses() {
               rowGetter={i => filteredRows[i]}
               rowsCount={rows.length}
               minHeight={500}
-              maxWidth={900}
+              // maxWidth={900}
               toolbar={
                 <Toolbar enableFilter={true}>
                   <button
