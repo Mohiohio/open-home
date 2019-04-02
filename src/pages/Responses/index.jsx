@@ -7,6 +7,7 @@ import { applyFilters } from "../../utils/hooks"
 import Box from "../../components/Box"
 import Row from "../../components/Row"
 import Column from "../../components/Column"
+import styles from "./Responses.module.scss"
 
 const selectors = Data.Selectors
 const { AutoCompleteFilter } = Filters
@@ -66,7 +67,7 @@ function Responses() {
       .catch(e => {
         console.error(e)
       })
-  }, [])
+  }, [rows])
 
   const filteredRows = getRows(rows, filters)
 
@@ -79,31 +80,33 @@ function Responses() {
   return (
     <Box>
       <Row>
-        <Column>
-          <h1>Your open home responses</h1>
-          <ReactDataGrid
-            columns={columns}
-            rowGetter={i => filteredRows[i]}
-            rowsCount={rows.length}
-            minHeight={500}
-            maxWidth={900}
-            toolbar={
-              <Toolbar enableFilter={true}>
-                <button
-                  type="button"
-                  className="btn"
-                  onClick={() => downloadCSV()}
-                >
-                  Export CSV
-                </button>
-              </Toolbar>
-            }
-            onAddFilter={filter => setFilters(handleFilterChange(filter))}
-            onClearFilters={() => setFilters({})}
-            getValidFilterValues={columnKey =>
-              getValidFilterValues(rows, columnKey)
-            }
-          />
+        <Column hasPadding={false}>
+          <h1>Open Home Responses</h1>
+          <div className={styles.gridWrap}>
+            <ReactDataGrid
+              columns={columns}
+              rowGetter={i => filteredRows[i]}
+              rowsCount={rows.length}
+              minHeight={500}
+              maxWidth={900}
+              toolbar={
+                <Toolbar enableFilter={true}>
+                  <button
+                    type="button"
+                    className="btn"
+                    onClick={() => downloadCSV()}
+                  >
+                    Export CSV
+                  </button>
+                </Toolbar>
+              }
+              onAddFilter={filter => setFilters(handleFilterChange(filter))}
+              onClearFilters={() => setFilters({})}
+              getValidFilterValues={columnKey =>
+                getValidFilterValues(rows, columnKey)
+              }
+            />
+          </div>
         </Column>
       </Row>
     </Box>

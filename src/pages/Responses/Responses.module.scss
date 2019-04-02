@@ -1,54 +1,51 @@
 @import "../../styles/_global.scss";
 @import "../../styles/_variables.scss";
 
-.Box {
-  margin: 2rem 1rem;
-  padding: 1rem;
-  position: relative;
-  overflow: hidden;
-  background: $colorWhite;
-  max-width: inherit;
-  min-width: 320px;
-  width: 90%;
-  min-height: 20rem;
-  margin: 0 auto;
-  -webkit-box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.5),
-    0 0 60px 0 rgba(0, 0, 0, 0.5);
-  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.5), 0 0 60px 0 rgba(0, 0, 0, 0.5);
 
-  @media  screen and (min-width: 40px) {
-    height: auto;
-    margin: 1rem;
-  }
-  @media screen and (min-width: 800px) {
-    height: auto;
-  }
-}
+/**
+NOTE: hacks ahead
+THis overrrides the react grid component styling, because there doesn't 
+seem to be an obvious way to to that. If things breat, comment this out. 
+It'll look ugly, but might work better.
+*/
 
-h1 {
-  text-align: center;
+.gridWrap{
+  background: red;
   width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  margin: 0.5rem 0;
-  .heroIcon{
-    flex-basis: 10%;
-    margin-right: .5rem;
+  display: block;
+  // margin-left: -1rem;
+  // margin-right: -1rem;
+  > div{ // .react-grid-Container
+    font-size: .75rem;
+    border: 0px solid transparent !important;
+    >div:first-child{ //. toolbar
+      border: 0px solid transparent !important;
+      padding-right:  0;
+    }
+    >div:nth-child(2){ // MAIN
+      outline: none !important;
+      >div:nth-child(1){ // .react-grid-Grid
+      }
+    }
   }
 }
-h5{
-  color: $colorUi;
-  margin: 0 0 1rem 0;
-  padding:0;
-  font-weight: normal;
-}
 
-
-// REACT GRID
-.react-grid-Container{
-  font-size: .75rem;
-}
-.react-grid-Toolbar{
-  border-color: transparent;
+@media screen and (max-width: 756px) {
+  .gridWrap{
+    margin-left: -1rem;
+    margin-right: -1rem;
+    width: calc(100% + 2rem); // accounts for negative margins
+    > div{ // .react-grid-Container
+      >div:first-child{ //. toolbar
+        padding-right:  .5rem;;
+      }
+      >div:nth-child(2){ // MAIN
+        outline: none !important;
+        >div:nth-child(1){ // .react-grid-Grid
+          border-left: 0px solid transparent;
+          border-right: 0px solid transparent;
+        }
+      }
+    }
+  }  
 }
